@@ -1,25 +1,39 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { joinUser } from "../services/api";
 
 const JoinForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [nick, setNick] = useState("");
 
-  const handleSubmit = (e) => {
+  const history = useHistory();
+
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    // 회원가입 처리 로직
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // ... 추가적인 회원가입 로직 수행
+    try {
+      await joinUser(email, password, nick);
+      console.log("회원가입 성공!");
+      history.push("/login");
+    } catch (error) {
+      console.error("회원가입 실패:", error.message);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSignUp}>
       <h2>회원가입</h2>
       <input
         type="email"
         placeholder="이메일"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="닉네임"
+        value={nick}
+        onChange={(e) => setNick(e.target.value)}
       />
       <input
         type="password"
