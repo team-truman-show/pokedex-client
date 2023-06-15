@@ -1,19 +1,26 @@
 import { useState } from "react";
+import { loginUser } from "../services/api";
+import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const history = useHistory();
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // 로그인 처리 로직
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // ... 추가적인 로그인 로직 수행
+    try {
+      await loginUser(email, password);
+      console.log("로그인 성공!");
+      history.push("/");
+    } catch (error) {
+      console.error("로그인 실패:", error.message);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleLogin}>
       <h2>로그인</h2>
       <input
         type="email"
