@@ -9,6 +9,10 @@ export const HeaderContainer = styled.header`
   padding: 1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid #dee2e6;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 100;
 `;
 
 export const LogoLink = styled(Link)`

@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { ViewportProvider } from "./hooks/useViewport";
-import GlobalStyle from "./GlobalStyle";
+
+import "./App.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -14,14 +15,15 @@ const App = () => {
   return (
     <Router>
       <ViewportProvider>
-        <GlobalStyle />
         <Header />
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route exact path="/join" component={JoinPage} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
+        <div className="wrapper">
+          <Switch>
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/join" component={JoinPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </div>
         <Footer />
       </ViewportProvider>
     </Router>
