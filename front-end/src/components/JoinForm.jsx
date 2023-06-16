@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { joinUser } from "../services/api";
+import { joinUser } from "/@/services/api";
 
 const JoinForm = () => {
   const [email, setEmail] = useState("");

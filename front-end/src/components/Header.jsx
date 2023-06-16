@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
+// import { useAuth } from "/@/hooks/auth";
+import { useState } from "react";
 import {
   HeaderContainer,
   LogoLink,
@@ -7,10 +8,11 @@ import {
   NavLink,
   LoginButton,
   JoinButton,
-} from "../styles/header.style";
-import pokeLogo from "../assets/monBall.svg";
+} from "/@/styles/header.style";
+import pokeLogo from "/@/assets/monBall.svg";
 
 const Header = () => {
+  // const { accessToken } = useAuth();
   const [isLogin, setIsLogin] = useState(false);
   const history = useHistory();
 
@@ -20,6 +22,7 @@ const Header = () => {
   };
 
   const moveLogin = () => {
+    setIsLogin(true);
     history.push("/login");
   };
 
