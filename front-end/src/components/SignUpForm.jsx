@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { joinUser } from "/@/services/api";
+import { signUpUser } from "/@/api/signUp";
 
-const JoinForm = () => {
+const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nick, setNick] = useState("");
@@ -12,7 +12,7 @@ const JoinForm = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await joinUser(email, password, nick);
+      await signUpUser(email, password, nick);
       console.log("회원가입 성공!");
       history.push("/login");
     } catch (error) {
@@ -46,4 +46,4 @@ const JoinForm = () => {
   );
 };
 
-export default JoinForm;
+export default SignUpForm;

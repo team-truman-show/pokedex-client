@@ -6,8 +6,9 @@ import {
   LogoLink,
   LogoSvg,
   NavLink,
+  Btns,
   LoginButton,
-  JoinButton,
+  SignUpButton,
 } from "/@/styles/header.style";
 import pokeLogo from "/@/assets/monBall.svg";
 
@@ -21,13 +22,13 @@ const Header = () => {
     history.push("/");
   };
 
-  const moveLogin = () => {
+  const moveSignIn = () => {
     setIsLogin(true);
     history.push("/login");
   };
 
   const moveSignUp = () => {
-    history.push("/join");
+    history.push("/signup");
   };
 
   return (
@@ -37,26 +38,26 @@ const Header = () => {
       </LogoLink>
 
       <nav>
-        <NavLink to="/">Home</NavLink>{" "}
+        <NavLink to="/">Home</NavLink>
       </nav>
 
       <div>
         {isLogin ? (
-          <>
-            <NavLink to="/mypage">마이페이지</NavLink>
-            <LoginButton onClick={handleLogout} type="button">
+          <Btns>
+            <LoginButton to="/mypage">마이페이지</LoginButton>
+            <SignUpButton onClick={handleLogout} type="button">
               Logout
-            </LoginButton>
-          </>
+            </SignUpButton>
+          </Btns>
         ) : (
-          <>
-            <LoginButton onClick={moveLogin} type="button">
-              Login
+          <Btns>
+            <LoginButton onClick={moveSignIn} type="button">
+              Sign In
             </LoginButton>
-            <JoinButton onClick={moveSignUp} type="button">
-              SignUp
-            </JoinButton>
-          </>
+            <SignUpButton onClick={moveSignUp} type="button">
+              Sign Up
+            </SignUpButton>
+          </Btns>
         )}
       </div>
     </HeaderContainer>
