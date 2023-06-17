@@ -8,7 +8,7 @@ const SIGN_UP = "SIGN_UP";
 const SIGNUP_FAILURE = "SIGNUP_FAILURE";
 
 // const API_URL = process.env.REACT_APP_API_URL;
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = 'http://127.0.0.1:3000';
 
 export const login = (email, password) => {
   // 로그인 액션 생성자 함수

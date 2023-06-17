@@ -9,6 +9,7 @@ import MainPage from "./pages/MainPage";
 import JoinPage from "./pages/JoinPage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/404";
+import DetailPage from "./pages/DetailPage";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route exact path="/" component={MainPage} />
           <Route exact path="/join" component={JoinPage} />
           <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/detail/:page" component={DetailPage}/>
           <Route component={NotFoundPage} />
         </Switch>
         <Footer />

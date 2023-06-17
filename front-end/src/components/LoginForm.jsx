@@ -5,13 +5,12 @@ import { useHistory } from "react-router-dom";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const history = useHistory();
-
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await loginUser(email, password);
+      const data = await loginUser(email, password);
+      localStorage.setItem('token', data);
       console.log("로그인 성공!");
       history.push("/");
     } catch (error) {
