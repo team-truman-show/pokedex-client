@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { loginUser } from "/@/api/auth";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
-const SignInForm = () => {
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,8 +17,11 @@ const SignInForm = () => {
       console.log("로그인 성공");
       history.push("/");
     } catch (error) {
-      console.error(error);
+      console.error("로그인 실패:", error.message);
     }
+  };
+  const handlePassword = () => {
+    history.push("/PwPage"); // 비밀번호 변경 페이지 경로로 이동
   };
 
   return (
@@ -37,8 +40,9 @@ const SignInForm = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button type="submit">로그인</button>
+      <button onClick={handlePassword}>비밀번호찾기</button>
     </form>
   );
 };
 
-export default SignInForm;
+export default LoginForm;
