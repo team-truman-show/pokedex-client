@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-// import { useAuth } from "/@/hooks/auth";
 import { useState } from "react";
 import {
   HeaderContainer,
@@ -13,7 +12,6 @@ import {
 import pokeLogo from "/@/assets/monBall.svg";
 
 const Header = () => {
-  // const { accessToken } = useAuth();
   const [isLogin, setIsLogin] = useState(false);
   const history = useHistory();
 
@@ -22,7 +20,7 @@ const Header = () => {
     history.push("/");
   };
 
-  const moveSignIn = () => {
+  const moveLogin = () => {
     setIsLogin(true);
     history.push("/login");
   };
@@ -51,7 +49,7 @@ const Header = () => {
           </Btns>
         ) : (
           <Btns>
-            <LoginButton onClick={moveSignIn} type="button">
+            <LoginButton onClick={moveLogin} type="button">
               Sign In
             </LoginButton>
             <SignUpButton onClick={moveSignUp} type="button">
