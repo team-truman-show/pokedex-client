@@ -2,29 +2,25 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { ViewportProvider } from "./hooks/useViewport";
 
-import "./App.css";
-
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import "./App.css";
+import Layout from "./components/Layout";
 import MainPage from "./pages/MainPage";
-import JoinPage from "./pages/JoinPage";
-import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+import SignInPage from "./pages/SignInPage";
 import NotFoundPage from "./pages/404";
 
 const App = () => {
   return (
     <Router>
       <ViewportProvider>
-        <Header />
-        <div className="wrapper">
+        <Layout>
           <Switch>
             <Route exact path="/" component={MainPage} />
-            <Route exact path="/join" component={JoinPage} />
-            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/signUp" component={SignUpPage} />
+            <Route exact path="/login" component={SignInPage} />
             <Route component={NotFoundPage} />
           </Switch>
-        </div>
-        <Footer />
+        </Layout>
       </ViewportProvider>
     </Router>
   );

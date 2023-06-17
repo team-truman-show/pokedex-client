@@ -1,12 +1,10 @@
 import { useState } from "react";
-// import { useAuth } from "/@/hooks/auth";
-import { loginUser } from "/@/services/api";
+import { loginUser } from "/@/api/auth";
 import { useHistory } from "react-router-dom";
 
-const LoginForm = () => {
+const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const { handleLogin } = useAuth(); // useAuth 훅에서 handleLogin 함수를 가져오기.
 
   const history = useHistory();
 
@@ -14,12 +12,12 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      // await handleLogin(email, password); // useAuth 훅에서 가져온 handleLogin 함수를 호출.
-      await loginUser(email, password);
-      console.log("🚀 ~ file: LoginForm.jsx:14 ~ handleSubmit ~ e:", e);
+      const data = await loginUser(email, password);
+      localStorage.setItem("token", data.token); // 토큰 저장
+      console.log("로그인 성공");
       history.push("/");
     } catch (error) {
-      console.error("로그인 실패:", error.message);
+      console.error(error);
     }
   };
 
@@ -43,4 +41,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignInForm;

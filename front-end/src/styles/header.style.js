@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.header`
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid #dee2e6;
@@ -33,8 +33,15 @@ export const NavLink = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
+`;
+
+export const Btns = styled.div`
+  width: 185px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const LoginButton = styled.button`
@@ -52,7 +59,7 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const JoinButton = styled.button`
+export const SignUpButton = styled.button`
   padding: 0.5rem 1rem;
   border: none;
   color: #fff;
