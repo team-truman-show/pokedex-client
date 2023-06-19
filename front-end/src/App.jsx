@@ -4,8 +4,8 @@ import store from "./redux/store";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainPage from "./pages/MainPage";
-import JoinPage from "./pages/JoinPage";
-import LoginPage from "./pages/LoginPage";
+import JoinPage from "./JoinPage";
+import LoginPage from "./LoginPage";
 import NotFoundPage from "./pages/404";
 
 const App = () => {
