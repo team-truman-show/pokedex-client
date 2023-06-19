@@ -1,14 +1,17 @@
+// src/components/ProtectedRoute.jsx
 import { Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import { selectIsLogin } from "/@/redux/slices/authSlice";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const token = localStorage.getItem("token");
+  const isLogin = useSelector(selectIsLogin);
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        token ? <Component {...props} /> : <Redirect to="/login" />
+        isLogin ? <Component {...props} /> : <Redirect to="/login" />
       }
     />
   );

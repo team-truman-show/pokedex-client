@@ -1,31 +1,35 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import { Provider } from "react-redux";
 import { ViewportProvider } from "/@/hooks/useViewport";
+import store from "./redux/store/configureStore";
 
-// import "./App.css";
-import Layout from "/@/components/Layout";
+import Layout from "/@/components/layout/Layout";
+import ProtectedRoute from "/@/components/ProtectedRoute";
+import LandingPage from "/@/pages/LandingPage";
 import MainPage from "/@/pages/MainPage";
 import SignUpPage from "/@/pages/SignUpPage";
+import MyPage from "/@/pages/MyPage";
 import LoginPage from "/@/pages/LoginPage";
 import NotFoundPage from "/@/pages/404";
-import ProtectedRoute from "/@/components/ProtectedRoute";
 
 const App = () => {
   return (
-    <Router>
-      <ViewportProvider>
-        <Layout>
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route exact path="/signUp" component={SignUpPage} />
-            <ProtectedRoute path="/mypage" component={MyPage} />
-            <ProtectedRoute path="/mypocket" component={MyPocket} />
-            <Route exact path="/login" component={LoginPage} />
-            <Route component={NotFoundPage} />
-          </Switch>
-        </Layout>
-      </ViewportProvider>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <ViewportProvider>
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/main" component={MainPage} />
+              <Route exact path="/signUp" component={SignUpPage} />
+              <ProtectedRoute path="/mypage" component={MyPage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route component={NotFoundPage} />
+            </Switch>
+          </Layout>
+        </ViewportProvider>
+      </Router>
+    </Provider>
   );
 };
 

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { pokeDetail, pokeCatch } from "/@/services/api";
+import { pokemonDetail, pokemonCatch } from "/@/api/api";
 
 const Pokemon = () => {
   const { page } = useParams();
@@ -9,7 +9,7 @@ const Pokemon = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await pokeDetail(page);
+        const data = await pokemonDetail(page);
         setPokemonData(data);
       } catch (error) {
         console.error("API 호출 실패:", error.message);
@@ -25,7 +25,7 @@ const Pokemon = () => {
   const handleButtonClick = async () => {
     try {
       const id = pokemonData.id;
-      await pokeCatch(id);
+      await pokemonCatch(id);
     } catch (error) {
       console.error("API 호출 실패:", error.message);
     }
