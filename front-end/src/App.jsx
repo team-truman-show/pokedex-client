@@ -10,7 +10,7 @@ import MainPage from "/@/pages/MainPage";
 import SignUpPage from "/@/pages/SignUpPage";
 import MyPage from "/@/pages/MyPage";
 import LoginPage from "/@/pages/LoginPage";
-import NotFoundPage from "/@/pages/404";
+// import NotFoundPage from "/@/pages/404";
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
               <Route exact path="/signUp" component={SignUpPage} />
               <ProtectedRoute path="/mypage" component={MyPage} />
               <Route exact path="/login" component={LoginPage} />
-              <Route component={NotFoundPage} />
+              {/* <Route component={NotFoundPage} /> */}
             </Switch>
           </Layout>
         </ViewportProvider>
