@@ -38,6 +38,10 @@ export const pokemonSearch = async (pokename) => {
 };
 
 export const getPokemons = async () => {
+  const token = localStorage.getItem("token");
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.get(`${API_URL}/pokemon/page`, {
       headers,

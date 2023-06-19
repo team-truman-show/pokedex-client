@@ -8,6 +8,7 @@ export const signUpUser = async (email, password, nick) => {
       password,
       nick,
     });
+
     return response.data;
   } catch (error) {
     throw new Error("회원가입 실패: " + error.response.data);
@@ -20,6 +21,8 @@ export const loginUser = async (email, password) => {
       email,
       password,
     });
+
+    localStorage.setItem("token", response.data);
     return response.data;
   } catch (error) {
     throw new Error("로그인 실패: " + error.response.data);

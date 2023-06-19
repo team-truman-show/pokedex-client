@@ -17,8 +17,9 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       const data = await loginUser(email, password);
-      localStorage.setItem("token", data.token);
-      console.log("로그인 성공");
+      await localStorage.setItem("token", data.token);
+      console.log("로그인 성공", data.token);
+      // console.log("로그인 성공");
       dispatch(login());
       history.push("/main");
     } catch (error) {
