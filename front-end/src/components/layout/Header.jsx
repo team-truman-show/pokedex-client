@@ -1,5 +1,7 @@
+// src/components/layout/Header.jsx
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "/@/redux/slices/authSlice";
 import {
   HeaderContainer,
   LogoLink,
@@ -12,16 +14,17 @@ import {
 import pokeLogo from "/@/assets/monBall.svg";
 
 const Header = () => {
-  const [isLogin, setIsLogin] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const isLogin = useSelector((state) => state.auth.isLogin);
 
   const handleLogout = () => {
-    setIsLogin(false);
-    history.push("/");
+    localStorage.removeItem("token");
+    dispatch(logout());
+    history.push("/"); // 로그아웃 후 홈으로 리다이렉트
   };
 
   const moveLogin = () => {
-    setIsLogin(true);
     history.push("/login");
   };
 
@@ -29,31 +32,35 @@ const Header = () => {
     history.push("/signup");
   };
 
+  const moveMyPage = () => {
+    history.push("/mypage");
+  };
+
   return (
     <HeaderContainer>
-      <LogoLink to="/">
+      <LogoLink to={isLogin ? "/main" : "/"}>
         <LogoSvg src={pokeLogo} alt="Pokemon Logo" />
       </LogoLink>
-
       <nav>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to={isLogin ? "/main" : "/"}>Home</NavLink>
       </nav>
-
       <div>
         {isLogin ? (
           <Btns>
-            <LoginButton to="/mypage">마이페이지</LoginButton>
+            <LoginButton onClick={moveMyPage} type="button">
+              마이페이지
+            </LoginButton>
             <SignUpButton onClick={handleLogout} type="button">
-              Logout
+              로그아웃
             </SignUpButton>
           </Btns>
         ) : (
           <Btns>
             <LoginButton onClick={moveLogin} type="button">
-              Sign In
+              로그인
             </LoginButton>
             <SignUpButton onClick={moveSignUp} type="button">
-              Sign Up
+              회원가입
             </SignUpButton>
           </Btns>
         )}
