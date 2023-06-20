@@ -10,7 +10,9 @@ import {
   Input,
   Logo,
   Box,
+  FormContainer,
 } from "../../styles/userForms.style";
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -39,11 +41,11 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Container>
-        <Box>
-          <Logo />
-          <h2>로그인</h2>
+    <Container>
+      <Box>
+        <Logo />
+        <h2>로그인</h2>
+        <FormContainer onSubmit={handleSubmit}>
           <label htmlFor="email"></label>
           <Input
             type="email"
@@ -65,9 +67,9 @@ const LoginForm = () => {
             비밀번호 찾기
           </Button>
           {error && <p>{error}</p>}
-        </Box>
-      </Container>
-    </form>
+        </FormContainer>
+      </Box>
+    </Container>
   );
 };
 

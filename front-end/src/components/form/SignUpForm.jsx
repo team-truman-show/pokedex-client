@@ -7,7 +7,9 @@ import {
   Input,
   Logo,
   Box,
+  FormContainer,
 } from "../../styles/userForms.style";
+
 
 const SignUpForm = () => {
   const [email, setEmail] = useState("");
@@ -28,11 +30,11 @@ const SignUpForm = () => {
   };
 
   return (
-    <form onSubmit={handleSignUp}>
-      <Container>
-        <Box>
-          <Logo />
-          <h3>회원가입</h3>
+    <Container>
+      <Box>
+        <Logo />
+        <h3>회원가입</h3>
+        <FormContainer onSubmit={handleSignUp}>
           <Input
             type="email"
             placeholder="이메일"
@@ -52,9 +54,9 @@ const SignUpForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button type="submit">가입하기</Button>
-        </Box>
-      </Container>
-    </form>
+        </FormContainer>
+      </Box>
+    </Container>
   );
 };
 
