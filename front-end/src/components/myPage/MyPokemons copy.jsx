@@ -20,7 +20,7 @@ const MyPokemons = ({ myPokemonData }) => {
             <StyledLink to={`/detail/${pokemonData.id}`} key={pokemonData.id}>
               <MyPokemonCard>
                 <p style={{ color: "black" }}>No. {pokemonData.id}</p>
-                <MyPokemonImage src={pokemonData.imagegif} alt="Pokemon" />
+                <MyPokemonImage src={pokemonData.imageGif} alt="Pokemon" />
                 <MyPokemonName>이름: {pokemonData.name}</MyPokemonName>
               </MyPokemonCard>
             </StyledLink>
