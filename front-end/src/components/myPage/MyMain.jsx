@@ -1,28 +1,22 @@
-// components/MyMain.js
 import { useState, useEffect } from "react";
-import { myInfoFetch, myPokeFetch } from "/@/api/userAPI";
-import { pokemonDetail } from "/@/api/pokemonAPI";
+import { pokemonDetail } from "../../api/pokemonAPI";
+import { myInfoFetch, myPokeFetch } from "../../api/userAPI";
 import MyInfo from "./MyInfo";
 import MyPokemons from "./MyPokemons";
-import PasswordChangeModal from "./PasswordChangeModal";
-import { useSelector } from "react-redux";
+import { Subtitle } from "../../styles/myPage.style";
 
-const MyMain = () => {
-  const [myInfo, setMyInfo] = useState(null);
+const Mypage = () => {
+  const [myInfo, setMyInfo] = useState("");
+  const [myPokemons, setMyPokemons] = useState([]);
   const [myPokeData, setMyPokeData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const mydata = await myInfoFetch();
-        setMyInfo(mydata);
-        const mypokemons = await myPokeFetch();
-        const pokemonDataArr = await Promise.all(
-          mypokemons.map((id) => pokemonDetail(id))
-        );
-        setMyPokeData(pokemonDataArr);
+        const myData = await myInfoFetch();
+        setMyInfo(myData);
+        const myPokes = await myPokeFetch();
+        setMyPokemons(myPokes);
       } catch (error) {
         console.error("API 호출 실패:", error.message);
       }
@@ -31,21 +25,28 @@ const MyMain = () => {
     fetchData();
   }, []);
 
-  const openModal = () => {
-    setShowModal(true);
-  };
+  useEffect(() => {
+    const fetchPokeData = async () => {
+      const pokeDataArr = await Promise.all(
+        myPokemons.map((id) => pokemonDetail(id))
+      );
+      setMyPokeData(pokeDataArr);
+    };
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
+    fetchPokeData();
+  }, [myPokemons]);
+
+  if (!myInfo) {
+    return <div>Loading…</div>;
+  }
 
   return (
     <div>
-      <MyInfo myInfo={myInfo} openModal={openModal} />
-      <MyPokemons myPokeData={myPokeData} />
-      {showModal && <PasswordChangeModal closeModal={closeModal} />}
+      <MyInfo myInfo={myInfo} />
+      <Subtitle>내 포켓몬</Subtitle>
+      <MyPokemons myPokemonData={myPokeData} />
     </div>
   );
 };
 
-export default MyMain;
+export default Mypage;
