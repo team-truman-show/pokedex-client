@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { usePokemonSearch } from "/@/hooks/usePokemonSearch";
-import { Container, PostItem } from "/@/styles/listPokemon.style";
+import { Wrapper, Container, PostItem } from "/@/styles/listPokemon.style";
 
 const Main = () => {
   const { pokemons, pokemonName, setPokemonNames, searchPokemon } =
@@ -21,12 +21,12 @@ const Main = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <div>
         <form onSubmit={handlePokeSearch}>
           <input
             type="text"
-            placeholder="포켓몬찾기"
+            placeholder="포켓몬 검색"
             value={pokemonName}
             onChange={(e) => setPokemonNames(e.target.value)}
           />
@@ -47,7 +47,7 @@ const Main = () => {
       {pokemons && visiblePokemons < pokemons.length && (
         <button onClick={handleLoadMore}>더 보기</button>
       )}
-    </>
+    </Wrapper>
   );
 };
 
