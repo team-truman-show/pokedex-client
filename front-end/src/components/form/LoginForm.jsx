@@ -33,12 +33,12 @@ const LoginForm = () => {
   };
 
   return (
-    <Container>
-      <Box>
-        <Logo />
-        <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+      <Container>
+        <Box>
+          <Logo />
           <h2>로그인</h2>
-          <label htmlFor="email">이메일</label>
+          <label htmlFor="email"></label>
           <Input
             type="email"
             id="email"
@@ -46,7 +46,7 @@ const LoginForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="password">비밀번호</label>
+          <label htmlFor="password"></label>
           <Input
             type="password"
             id="password"
@@ -59,9 +59,9 @@ const LoginForm = () => {
             비밀번호 찾기
           </Button>
           {error && <p>{error}</p>}
-        </form>
-      </Box>
-    </Container>
+        </Box>
+      </Container>
+    </form>
   );
 };
 

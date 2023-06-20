@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Container = styled.div`
 
     background-image: url(./Image/pixel.jpg);
@@ -25,8 +26,8 @@ export const Button = styled.button`
   border-radius: 5px;
   width: 100px;
   height: 30px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 2px;
+  margin-bottom: 2px;
 `;
 
 export const Input = styled.input`

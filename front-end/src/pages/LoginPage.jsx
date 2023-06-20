@@ -7,7 +7,6 @@ const LoginPage = () => {
 
   return (
     <div>
-      <h1>로그인 페이지</h1>
       <LoginForm setIsLogin={setIsLogin} isLogin={isLogin} />
       {/* setIsLogin을 전달 */}
     </div>
