@@ -1,7 +1,17 @@
 // src/components/layout/Header.jsx
+import {
+  useState,
+  // useEffect
+} from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../redux/slices/authSlice";
+import {
+  logout,
+  // setUserName,
+  // selectUserName,
+} from "../../redux/slices/authSlice";
+// import { Redirect } from "react-router-dom";
+// import { myInfoFetch } from "../../api/userAPI";
 import {
   HeaderContainer,
   LogoLink,
@@ -12,11 +22,45 @@ import {
   SignUpButton,
 } from "../../styles/header.style";
 import pokeLogo from "../../assets/monBall.svg";
+import Modal from "../Modal";
 
 const Header = () => {
+  // const [redirectHome, setRedirectHome] = useState(false);
+  const [error, setError] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.auth.isLogin);
+  // const userName = useSelector(selectUserName);
+
+  // useEffect(() => {
+  //   if (isLogin) {
+  //     // 로그인 상태일 때만 사용자 정보 가져오기
+  //     const fetchData = async () => {
+  //       try {
+  //         const data = await myInfoFetch();
+  //         dispatch(setUserName(data.userName)); // 사용자 이름 설정
+  //       } catch (error) {
+  //         setError(error.message);
+  //       }
+  //     };
+
+  //     fetchData();
+  //   }
+  // }, [dispatch, isLogin]);
+
+  // const handleLogout = () => {
+  //   try {
+  //     localStorage.removeItem("token");
+  //     dispatch(logout());
+  //     setRedirectHome(true);
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // };
+
+  // if (redirectHome) {
+  //   return <Redirect to="/" />;
+  // }
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -36,6 +80,10 @@ const Header = () => {
     history.push("/mypage");
   };
 
+  const closeModal = () => {
+    setError("");
+  };
+
   return (
     <HeaderContainer>
       <LogoLink to={isLogin ? "/main" : "/"}>
@@ -47,8 +95,9 @@ const Header = () => {
       <div>
         {isLogin ? (
           <Btns>
+            {/* <span>{userName}</span> */}
             <LoginButton onClick={moveMyPage} type="button">
-              <p>마이페이지</p>
+              마이페이지
             </LoginButton>
             <SignUpButton onClick={handleLogout} type="button">
               로그아웃
@@ -65,6 +114,7 @@ const Header = () => {
           </Btns>
         )}
       </div>
+      {error && <Modal message={error} onClose={closeModal} isError={true} />}
     </HeaderContainer>
   );
 };

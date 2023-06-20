@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { pokemonDetail } from "../../api/pokemonAPI";
 import { myInfoFetch, myPokeFetch } from "../../api/userAPI";
-import MyInfo from "./MyInfo";
+import MyInfo from "./Myinfo";
 import MyPokemons from "./MyPokemons";
-import { MainWrapper, Subtitle } from "../../styles/myPage.style";
+import { MainWrapper } from "../../styles/myMain.style";
 
 const MyPage = () => {
   const [myInfo, setMyInfo] = useState("");
@@ -43,7 +43,6 @@ const MyPage = () => {
   return (
     <MainWrapper>
       <MyInfo myInfo={myInfo} />
-      <Subtitle>내 포켓몬</Subtitle>
       <MyPokemons myPokemonData={myPokeData} />
     </MainWrapper>
   );

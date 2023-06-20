@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ViewportProvider } from "./hooks/useViewport";
 import store from "./redux/store/configureStore";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Layout from "./components/layout/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -13,24 +14,32 @@ import LoginPage from "./pages/LoginPage";
 import DetailPage from "./pages/DetailPage";
 import NotFoundPage from "./pages/404";
 
+const theme = createTheme({
+  typography: {
+    fontFamily: "NeoDunggeunmoPro-Regular",
+  },
+});
+
 const App = () => {
   return (
     <Provider store={store}>
-      <Router>
-        <ViewportProvider>
-          <Layout>
-            <Switch>
-              <Route exact path="/" component={LandingPage} />
-              <Route exact path="/main" component={MainPage} />
-              <Route exact path="/signUp" component={SignUpPage} />
-              <ProtectedRoute path="/mypage" component={MyPage} />
-              <Route exact path="/detail/:page" component={DetailPage} />
-              <Route exact path="/login" component={LoginPage} />
-              <Route component={NotFoundPage} />
-            </Switch>
-          </Layout>
-        </ViewportProvider>
-      </Router>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <ViewportProvider>
+            <Layout>
+              <Switch>
+                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/main" component={MainPage} />
+                <Route exact path="/signUp" component={SignUpPage} />
+                <ProtectedRoute path="/mypage" component={MyPage} />
+                <Route exact path="/detail/:page" component={DetailPage} />
+                <Route exact path="/login" component={LoginPage} />
+                <Route component={NotFoundPage} />
+              </Switch>
+            </Layout>
+          </ViewportProvider>
+        </Router>
+      </ThemeProvider>
     </Provider>
   );
 };

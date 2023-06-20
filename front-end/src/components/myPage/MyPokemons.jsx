@@ -1,14 +1,20 @@
 import PropTypes from "prop-types";
 
-import { GuardContainer, MyPokemonGrid } from "../../styles/myPage.style";
+import {
+  Wrapper,
+  Head,
+  GuardContainer,
+  MyPokemonGrid,
+} from "../../styles/myPokemon.style";
 import Card from "./Card";
 
 const MyPokemons = ({ myPokemonData }) => {
   return (
-    <div>
-      <div>
+    <Wrapper>
+      <Head>
+        <h1>내 포켓몬</h1>
         <h2>포켓몬 수: {myPokemonData.length}</h2>
-      </div>
+      </Head>
       <GuardContainer>
         <MyPokemonGrid>
           {myPokemonData.map((pokemonData) => (
@@ -16,7 +22,7 @@ const MyPokemons = ({ myPokemonData }) => {
           ))}
         </MyPokemonGrid>
       </GuardContainer>
-    </div>
+    </Wrapper>
   );
 };
 

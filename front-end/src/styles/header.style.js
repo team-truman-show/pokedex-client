@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.header`
   display: flex;
-  // flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   padding: 1rem;
