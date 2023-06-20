@@ -1,12 +1,15 @@
-// // Main.js
-
+// Main.js
 import { useState } from "react";
 import { usePokemonSearch } from "/@/hooks/usePokemonSearch";
 import {
   Wrapper,
   SearchBar,
+  Input,
+  SearchBtn,
   Container,
+  Img,
   PostItem,
+  Btn,
 } from "/@/styles/listPokemon.style";
 
 const Main = () => {
@@ -28,27 +31,27 @@ const Main = () => {
   return (
     <Wrapper>
       <SearchBar onSubmit={handlePokeSearch}>
-        <input
+        <Input
           type="text"
           placeholder="포켓몬 검색"
           value={pokemonName}
           onChange={(e) => setPokemonNames(e.target.value)}
         />
-        <button type="submit">검색</button>
+        <SearchBtn type="submit">검색</SearchBtn>
       </SearchBar>
 
       <Container>
         {pokemons &&
           pokemons.slice(0, visiblePokemons).map((data, index) => (
-            <PostItem key={index}>
-              <img src={data.imagegif} />
+            <PostItem to={`/detail/${data.id}`} key={index}>
+              <Img src={data.imagegif} />
               <div>{data.name}</div>
             </PostItem>
           ))}
       </Container>
 
       {pokemons && visiblePokemons < pokemons.length && (
-        <button onClick={handleLoadMore}>더 보기</button>
+        <Btn onClick={handleLoadMore}>더 보기</Btn>
       )}
     </Wrapper>
   );

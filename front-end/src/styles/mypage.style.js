@@ -4,7 +4,7 @@ import ball from "../../public/Image/ball.png";
 
 export const MainWrapper = styled.div`
   width: 100%;
-  background-color: pink;
+  // background-color: pink;
 `;
 
 export const PokemonGrid = styled.div`
