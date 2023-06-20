@@ -9,11 +9,6 @@ export const BigContainer = styled.div`
   margin: 0 auto;
   background-color: ${({ color }) => `rgb(${color.join(",")})`};
 `;
-export const StyledButton = styled.img`
-  width: 100px;
-  height: 50ps;
-  cursor: pointer;
-`;
 
 export const SmallContainer1 = styled.div`
   flex: 1;
@@ -57,32 +52,28 @@ export const StyledImage = styled.img`
 `;
 
 export const BalloonContainer = styled.div`
+  z-index: 1;
   position: relative;
-  display: flex;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #f0f0f0;
-  color: #333;
-  max-width: 200px;
-  width: 100%;
-  height: 100%;
-  &::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px;
-    border-color: transparent transparent transparent #f0f0f0;
-    right: -20px;
-    transform: translateY(-50%);
+  top: 40px;
+  left: 65px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  font-family: NeoDunggeunmoPro-Regular, sans-serif, Arial;
+  &:hover {
+    transform: scale(2);
+    font-family: NeoDunggeunmo, sans-serif, Arial;
   }
+`;
+
+export const StyledButton = styled.img`
+  width: 100px;
+  position: relative;
 `;
 
 export const ParentContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   height: 100%; /* 적절한 높이를 지정해주세요 */
 `;

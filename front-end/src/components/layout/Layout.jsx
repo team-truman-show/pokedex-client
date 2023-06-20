@@ -6,7 +6,7 @@ import { Main } from "../../styles/layout.style";
 
 export default function Layout({ children }) {
   const location = useLocation();
-  const HIDDEN_HEADER_FOOTER_SIDE = ["/"];
+  const HIDDEN_HEADER_FOOTER_SIDE = ["/", "/login", "/signup"];
   const isHiddenHeaderFooterSide = HIDDEN_HEADER_FOOTER_SIDE.includes(
     location.pathname
   );

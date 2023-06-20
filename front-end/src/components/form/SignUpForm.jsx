@@ -9,24 +9,35 @@ import {
   Box,
   FormContainer,
 } from "../../styles/userForms.style";
-
+import Modal from "../Modal";
 
 const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nick, setNick] = useState("");
-
+  const [modalContent, setModalContent] = useState(null);
   const history = useHistory();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
       await signUpUser(email, password, nick);
-      console.log("회원가입 성공!");
-      history.push("/login");
+      // console.log("회원가입 성공!");
+      setModalContent({
+        message: "회원가입이 완료되었습니다.",
+        isError: false,
+      });
     } catch (error) {
-      console.error("회원가입 실패:", error.message);
+      // console.error("회원가입 실패:", error.message);
+      setModalContent({ message: error.message, isError: true });
     }
+  };
+
+  const closeModal = () => {
+    if (modalContent && !modalContent.isError) {
+      history.push("/login");
+    }
+    setModalContent(null);
   };
 
   return (
@@ -56,6 +67,13 @@ const SignUpForm = () => {
           <Button type="submit">가입하기</Button>
         </FormContainer>
       </Box>
+      {modalContent && (
+        <Modal
+          message={modalContent.message}
+          onClose={closeModal}
+          isError={modalContent.isError}
+        />
+      )}
     </Container>
   );
 };

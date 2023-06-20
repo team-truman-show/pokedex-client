@@ -12,7 +12,7 @@ import {
   Box,
   FormContainer,
 } from "../../styles/userForms.style";
-
+import Modal from "../Modal";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -29,15 +29,20 @@ const LoginForm = () => {
       console.log("로그인 성공", data.token);
       // console.log("로그인 성공");
       dispatch(login());
+
       history.push("/main");
     } catch (error) {
-      setError("로그인 실패");
-      console.error("로그인 실패:", error.message);
+      setError(error.message);
+      // console.error("로그인 실패:", error.message);
     }
   };
 
-  const handlePassword = () => {
-    history.push("/PwPage"); // 비밀번호 변경 페이지 경로로 이동
+  // const handlePassword = () => {
+  //   history.push("/PwPage"); // 비밀번호 변경 페이지 경로로 이동
+  // };
+
+  const closeModal = () => {
+    setError("");
   };
 
   return (
@@ -63,12 +68,12 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button type="submit">로그인</Button>
-          <Button type="button" onClick={handlePassword}>
+          {/* <Button type="button" onClick={handlePassword}>
             비밀번호 찾기
-          </Button>
-          {error && <p>{error}</p>}
+          </Button> */}
         </FormContainer>
       </Box>
+      {error && <Modal message={error} onClose={closeModal} isError={true} />}
     </Container>
   );
 };

@@ -14,12 +14,14 @@ import {
   BalloonContainer,
   ParentContainer,
 } from "../../styles/detailPokemon.style";
-import { types, back } from "../../styles/types";
+import { types, back, korean } from "../../styles/types";
 import monsterball from "../../../public/Image/monsterball.png";
+import Modal from "../Modal";
 
 const Pokemon = () => {
   const { page } = useParams();
   const [pokemonData, setPokemonData] = useState(null);
+  const [modalContent, setModalContent] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +29,8 @@ const Pokemon = () => {
         const data = await pokemonDetail(page);
         setPokemonData(data);
       } catch (error) {
-        console.error("API 호출 실패:", error.message);
+        // console.error("API 호출 실패:", error.message);
+        setModalContent({ message: error.message, isError: true });
       }
     };
 
@@ -41,11 +44,17 @@ const Pokemon = () => {
     try {
       const id = pokemonData.id;
       await pokemonCatch(id);
+      setModalContent({ message: "잡기에 성공했습니다!", isError: false });
     } catch (error) {
-      console.error("API 호출 실패:", error.message);
+      // console.error("API 호출 실패:", error.message);
+      setModalContent({ message: error.message, isError: true });
     }
   };
   // 데이터를 활용하여 컴포넌트를 구성하고 반환합니다.
+  const closeModal = () => {
+    setModalContent(null);
+  };
+
   return (
     <div>
       <BigContainer color={back[pokemonData.type1]}>
@@ -58,11 +67,11 @@ const Pokemon = () => {
           <StyledText>특성: {pokemonData.feature}</StyledText>
           타입:
           <ColoredText color={types[pokemonData.type1]}>
-            {pokemonData.type1}{" "}
+            {korean[pokemonData.type1]}
           </ColoredText>
           {pokemonData.type2 && (
             <ColoredText color={types[pokemonData.type2]}>
-              {pokemonData.type2}
+              {korean[pokemonData.type2]}
             </ColoredText>
           )}
           <StyledText>설명: {pokemonData.description}</StyledText>
@@ -70,15 +79,18 @@ const Pokemon = () => {
       </BigContainer>
       <SmallContainer3>
         <br />
-        <ParentContainer>
+        <ParentContainer onClick={handleButtonClick}>
           <BalloonContainer>잡기</BalloonContainer>
         </ParentContainer>
-        <StyledButton
-          src={monsterball}
-          alt="버튼 이미지"
-          onClick={handleButtonClick}
-        />
+        <StyledButton src={monsterball} alt="버튼 이미지" />
       </SmallContainer3>
+      {modalContent && (
+        <Modal
+          message={modalContent.message}
+          onClose={closeModal}
+          isError={modalContent.isError}
+        />
+      )}
     </div>
   );
 };
