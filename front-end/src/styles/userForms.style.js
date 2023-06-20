@@ -5,7 +5,8 @@ export const Container = styled.div`
 
     background-image: url(./Image/pixel.jpg);
     background-size: 100% 100%;
-    height: 500px;
+    height: 100vh;
+    width: 100vw;
     
     border-radius: 10px;
     display: flex;
@@ -53,11 +54,18 @@ export const Box = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 300px;
+  height: 350px;
+  width: 300px;
   display: flex;
   background-color: #ffffe0;
   border-width: 3px;
   border-style: solid;
   border-color: #ffea00;
   border-radius: 5px;
+`;
+
+export const FormContainer = styled.form`
+display: flex;
+flex-direction: column;
+align-items: center;
 `;
