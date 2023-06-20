@@ -2,6 +2,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ball from "../../public/Image/ball.png";
 
+export const MainWrapper = styled.div`
+  width: 100%;
+  background-color: pink;
+`;
+
 export const PokemonGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -13,7 +18,6 @@ export const MyPokemonGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   overflow-y: auto;
-  max-height: 70vh;
   text-align: center;
   border: 1px solid black;
   padding: 10px;
@@ -47,8 +51,8 @@ export const MyPokemonCard = styled.div`
 `;
 
 export const PokemonImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   margin-bottom: 0.5rem;
 `;
 export const MyPokemonImage = styled.img`

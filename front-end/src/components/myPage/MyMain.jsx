@@ -3,9 +3,9 @@ import { pokemonDetail } from "../../api/pokemonAPI";
 import { myInfoFetch, myPokeFetch } from "../../api/userAPI";
 import MyInfo from "./MyInfo";
 import MyPokemons from "./MyPokemons";
-import { Subtitle } from "../../styles/myPage.style";
+import { MainWrapper, Subtitle } from "../../styles/myPage.style";
 
-const Mypage = () => {
+const MyPage = () => {
   const [myInfo, setMyInfo] = useState("");
   const [myPokemons, setMyPokemons] = useState([]);
   const [myPokeData, setMyPokeData] = useState([]);
@@ -41,12 +41,12 @@ const Mypage = () => {
   }
 
   return (
-    <div>
+    <MainWrapper>
       <MyInfo myInfo={myInfo} />
       <Subtitle>내 포켓몬</Subtitle>
       <MyPokemons myPokemonData={myPokeData} />
-    </div>
+    </MainWrapper>
   );
 };
 
-export default Mypage;
+export default MyPage;

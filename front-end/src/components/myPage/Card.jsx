@@ -4,7 +4,7 @@ import {
   MyPokemonCard,
   MyPokemonImage,
   MyPokemonName,
-} from "/@/styles/myPage.style";
+} from "../../styles/myPage.style";
 
 const Card = ({ pokeData }) => {
   return (

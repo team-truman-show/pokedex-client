@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import { usePokemonSearch } from "/@/hooks/usePokemonSearch";
-import { Wrapper, Container, PostItem } from "/@/styles/listPokemon.style";
+import {
+  Wrapper,
+  SearchBar,
+  Container,
+  PostItem,
+} from "/@/styles/listPokemon.style";
 
 const Main = () => {
   const { pokemons, pokemonName, setPokemonNames, searchPokemon } =
@@ -22,17 +27,15 @@ const Main = () => {
 
   return (
     <Wrapper>
-      <div>
-        <form onSubmit={handlePokeSearch}>
-          <input
-            type="text"
-            placeholder="포켓몬 검색"
-            value={pokemonName}
-            onChange={(e) => setPokemonNames(e.target.value)}
-          />
-          <button type="submit">검색</button>
-        </form>
-      </div>
+      <SearchBar onSubmit={handlePokeSearch}>
+        <input
+          type="text"
+          placeholder="포켓몬 검색"
+          value={pokemonName}
+          onChange={(e) => setPokemonNames(e.target.value)}
+        />
+        <button type="submit">검색</button>
+      </SearchBar>
 
       <Container>
         {pokemons &&

@@ -1,20 +1,21 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+
+import { GuardContainer, MyPokemonGrid } from "../../styles/myPage.style";
+import Card from "./Card";
 
 const MyPokemons = ({ myPokemonData }) => {
   return (
     <div>
-      <h1>지닌 포켓몬</h1>
-      <h2>포켓몬 수: {myPokemonData.length}</h2>
-      {myPokemonData.map((pokemonData) => (
-        <div key={pokemonData.id}>
-          <Link to={`/detail/${pokemonData.id}`}>
-            <img src={pokemonData.imageurl} alt="Pokemon" />
-            <p>No. {pokemonData.id}</p>
-            <p>이름: {pokemonData.name}</p>
-          </Link>
-        </div>
-      ))}
+      <div>
+        <h2>포켓몬 수: {myPokemonData.length}</h2>
+      </div>
+      <GuardContainer>
+        <MyPokemonGrid>
+          {myPokemonData.map((pokemonData) => (
+            <Card key={pokemonData.id} pokeData={pokemonData} />
+          ))}
+        </MyPokemonGrid>
+      </GuardContainer>
     </div>
   );
 };

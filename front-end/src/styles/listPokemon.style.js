@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 10px 50px;
-  background-co5or: pink;
-  border: 1px solid;
+  width: 100vw;
+  padding: 20px 100px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SearchBar = styled.form`
+  background-color: pink;
+  width: 300px;
 `;
 
 export const Container = styled.div`
