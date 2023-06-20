@@ -6,7 +6,7 @@ import {
   MyPokemonName,
   GuardContainer,
   MyPokemonGrid,
-} from "/@/styles/myPage.style";
+} from "../../styles/myPage.style";
 
 const MyPokemons = ({ myPokemonData }) => {
   return (

@@ -15,11 +15,26 @@ export const PokemonGrid = styled.div`
   max-height: 70vh;
 `;
 export const MyPokemonGrid = styled.div`
-  width: 100%;
-  padding: 30px 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  overflow-y: auto;
+  text-align: center;
+  border: 1px solid black;
+  padding: 10px;
+  border-collapse: collapse;
+
+  & > * {
+    padding: 10px;
+    border-bottom: 1px solid black;
+  }
+
+  & > *:nth-child(-n + 3) {
+    border-top: 1px solid black;
+  }
+
+  & > *:nth-child(3n) {
+    border-right: none;
+  }
 `;
 
 export const PokemonCard = styled.div`
@@ -27,25 +42,12 @@ export const PokemonCard = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
-export const MyPokemonImage = styled.img`
-  width: 60%;
-  transition: transform 0.3s;
-`;
-export const MyPokemonCard = styled(Link)`
+export const MyPokemonCard = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-  // width: 100%;
-  // height: 300px;
-  background-color: #f8f8ff;
-  border-radius: 5px;
-  overflow: hidden;
-
-  &:hover ${MyPokemonImage} {
-    transform: scale(1.4);
-  }
+  padding: 10px;
+  border-right: 1px solid black;
 `;
 
 export const PokemonImage = styled.img`
@@ -53,7 +55,11 @@ export const PokemonImage = styled.img`
   height: 100%;
   margin-bottom: 0.5rem;
 `;
-
+export const MyPokemonImage = styled.img`
+  width: 70px;
+  height: 70px;
+  margin-bottom: 0.5rem;
+`;
 export const PokemonName = styled.h3`
   font-size: 1.2rem;
   margin-bottom: 0.2rem;
@@ -82,7 +88,10 @@ export const GuardContainer = styled.div`
   border-bottom: 1px solid black;
   padding: 10px;
 `;
-
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
 export const MonsterBall = styled.div`
   width: 200px;
   height: 150px;

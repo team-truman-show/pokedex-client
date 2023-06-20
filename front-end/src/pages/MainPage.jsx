@@ -1,4 +1,4 @@
-import Main from "/@/components/pokemon/ListPokemons";
+import Main from "../components/pokemon/ListPokemons";
 
 const MainPage = () => {
   return (

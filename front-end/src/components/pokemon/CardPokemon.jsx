@@ -5,7 +5,7 @@ import {
   PokemonCard as PokemonCardStyle,
   PokemonImage,
   PokemonName,
-} from "/@/styles/pokemon.style";
+} from "../../styles/pokemon.style";
 
 const PokemonCard = ({ data }) => (
   <Link to={`/detail/${data.id}`}>

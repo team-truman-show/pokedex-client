@@ -1,10 +1,16 @@
 // src/components/form/LoginForm.jsx
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "/@/redux/slices/authSlice";
-import { loginUser } from "/@/api/userAPI";
+import { login } from "../../redux/slices/authSlice";
+import { loginUser } from "../../api/userAPI";
 import { useHistory } from "react-router-dom";
-import { Container, Button, Input, Logo, Box } from "/@/styles/userForms.style";
+import {
+  Container,
+  Button,
+  Input,
+  Logo,
+  Box,
+} from "../../styles/userForms.style";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");

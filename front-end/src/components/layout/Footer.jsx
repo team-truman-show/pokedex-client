@@ -4,8 +4,8 @@ import {
   Logo,
   LogoSvg,
   Text,
-} from "/@/styles/footer.style";
-import pokemonLogo from "/@/assets/monBall.svg";
+} from "../../styles/footer.style";
+import pokemonLogo from "../../assets/monBall.svg";
 
 const Footer = () => {
   return (

@@ -1,7 +1,13 @@
 import { useState } from "react";
-import { signUpUser } from "/@/api/userAPI";
+import { signUpUser } from "../../api/userAPI";
 import { useHistory } from "react-router-dom";
-import { Container, Button, Input, Logo, Box } from "/@/styles/userForms.style";
+import {
+  Container,
+  Button,
+  Input,
+  Logo,
+  Box,
+} from "../../styles/userForms.style";
 
 const SignUpForm = () => {
   const [email, setEmail] = useState("");

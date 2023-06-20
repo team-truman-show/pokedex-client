@@ -1,5 +1,5 @@
 // loginPage.js
-import LoginForm from "/@/components/form/LoginForm";
+import LoginForm from "../components/form/LoginForm";
 import { useState } from "react";
 
 const LoginPage = () => {

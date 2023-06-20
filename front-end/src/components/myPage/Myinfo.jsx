@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { MonsterBall } from "/@/styles/myPage.style";
+import { MonsterBall } from "../../styles/mypage.style";
 
 const MyInfo = ({ myInfo }) => {
   return (
