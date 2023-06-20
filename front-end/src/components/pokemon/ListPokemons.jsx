@@ -1,6 +1,6 @@
 // Main.js
 import { useState } from "react";
-import { usePokemonSearch } from "/@/hooks/usePokemonSearch";
+import { usePokemonSearch } from "../../hooks/usePokemonSearch";
 import {
   Wrapper,
   SearchBar,
@@ -10,7 +10,7 @@ import {
   Img,
   PostItem,
   Btn,
-} from "/@/styles/listPokemon.style";
+} from "../../styles/listPokemon.style";
 
 const Main = () => {
   const { pokemons, pokemonName, setPokemonNames, searchPokemon } =

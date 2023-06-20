@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { myPWchange } from "/@/api/userAPI";
+import { myPWchange } from "../../api/userAPI";
 
 const PasswordChangeModal = ({ closeModal }) => {
   const [successMessage, setSuccessMessage] = useState("");

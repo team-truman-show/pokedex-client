@@ -1,5 +1,5 @@
 // src/redux/reducers/authReducer copy
-import * as actionTypes from "/@/redux/actions/actionTypes";
+import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   token: null,

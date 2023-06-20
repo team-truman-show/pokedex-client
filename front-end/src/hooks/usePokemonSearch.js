@@ -1,6 +1,6 @@
 // hooks/usePokemonSearch.js
 import { useState, useEffect } from "react";
-import { getPokemons } from "/@/api/pokemonAPI";
+import { getPokemons } from "../api/pokemonAPI";
 
 export const usePokemonSearch = () => {
   const [allPokemons, setAllPokemons] = useState([]);

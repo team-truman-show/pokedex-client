@@ -1,7 +1,7 @@
 // src/components/layout/Header.jsx
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "/@/redux/slices/authSlice";
+import { logout } from "../../redux/slices/authSlice";
 import {
   HeaderContainer,
   LogoLink,
@@ -10,8 +10,8 @@ import {
   Btns,
   LoginButton,
   SignUpButton,
-} from "/@/styles/header.style";
-import pokeLogo from "/@/assets/monBall.svg";
+} from "../../styles/header.style";
+import pokeLogo from "../../assets/monBall.svg";
 
 const Header = () => {
   const history = useHistory();

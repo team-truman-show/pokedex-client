@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { BgImage, BgPage, Display, MainButton } from "/@/styles/Landing.style";
+import {
+  BgImage,
+  BgPage,
+  Display,
+  MainButton,
+} from "../../styles/Landing.style";
+
 import { useHistory } from "react-router-dom";
 
 const Landing = () => {

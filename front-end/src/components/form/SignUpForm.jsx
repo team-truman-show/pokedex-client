@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signUpUser } from "/@/api/userAPI";
+import { signUpUser } from "../../api/userAPI";
 import { useHistory } from "react-router-dom";
 import {
   Container,
@@ -8,7 +8,8 @@ import {
   Logo,
   Box,
   FormContainer,
-} from "/@/styles/userForms.style";
+} from "../../styles/userForms.style";
+
 
 const SignUpForm = () => {
   const [email, setEmail] = useState("");

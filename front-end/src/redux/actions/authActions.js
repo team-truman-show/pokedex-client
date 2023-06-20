@@ -1,6 +1,6 @@
 // src/redux/actions/authActions.js
 
-import { LOGIN, LOGOUT } from "/@/redux/actions/actionTypes";
+import { LOGIN, LOGOUT } from "./actionTypes";
 
 export const loginAction = () => {
   // 토큰 생성 및 로컬 스토리지에 저장

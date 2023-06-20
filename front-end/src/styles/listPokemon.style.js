@@ -42,7 +42,6 @@ export const Container = styled.div`
 export const Img = styled.img`
   width: 60%;
   transition: transform 0.3s;
-  // background-color: black;
 `;
 
 // export const PostItem = styled.div`

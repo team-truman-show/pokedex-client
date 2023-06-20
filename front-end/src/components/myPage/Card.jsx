@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import {
-  StyledLink,
   MyPokemonCard,
   MyPokemonImage,
   MyPokemonName,
@@ -8,13 +7,11 @@ import {
 
 const Card = ({ pokeData }) => {
   return (
-    <StyledLink to={`/detail/${pokeData.id}`} key={pokeData.id}>
-      <MyPokemonCard>
-        <p style={{ color: "black" }}>No. {pokeData.id}</p>
-        <MyPokemonImage src={pokeData.imagegif} alt="Pokemon" />
-        <MyPokemonName>이름: {pokeData.name}</MyPokemonName>
-      </MyPokemonCard>
-    </StyledLink>
+    <MyPokemonCard to={`/detail/${pokeData.id}`} key={pokeData.id}>
+      <p style={{ color: "black" }}>No. {pokeData.id}</p>
+      <MyPokemonImage src={pokeData.imagegif} alt="Pokemon" />
+      <MyPokemonName>{pokeData.name}</MyPokemonName>
+    </MyPokemonCard>
   );
 };
 

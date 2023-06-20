@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL, headers } from "/@/util/auth";
+import { API_URL, headers } from "../util/auth";
 
 export const pokemonDetail = async (id) => {
   try {

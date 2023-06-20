@@ -1,7 +1,7 @@
 // components/MyMain.js
 import { useState, useEffect } from "react";
-import { myInfoFetch, myPokeFetch } from "/@/api/userAPI";
-import { pokemonDetail } from "/@/api/pokemonAPI";
+import { myInfoFetch, myPokeFetch } from "../../api/userAPI";
+import { pokemonDetail } from "../../api/pokemonAPI";
 import MyInfo from "./MyInfo";
 import MyPokemons from "./MyPokemons";
 import PasswordChangeModal from "./PasswordChangeModal";
