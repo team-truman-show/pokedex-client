@@ -48,7 +48,7 @@ const Header = () => {
         {isLogin ? (
           <Btns>
             <LoginButton onClick={moveMyPage} type="button">
-              마이페이지
+              <p>마이페이지</p>
             </LoginButton>
             <SignUpButton onClick={handleLogout} type="button">
               로그아웃

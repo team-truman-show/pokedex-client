@@ -46,13 +46,14 @@ export const Btns = styled.div`
 
 export const LoginButton = styled.button`
   margin-right: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0rem 0.5rem;
   border: 1px solid #ffd400;
   color: #ffd400;
   background-color: transparent;
   border-radius: 0.25rem;
   outline: none;
-
+  text-align: center;
+  margin-top: -1px;
   &:hover {
     background-color: #ffd400;
     color: #fff;
@@ -60,7 +61,7 @@ export const LoginButton = styled.button`
 `;
 
 export const SignUpButton = styled.button`
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
   border: none;
   color: #fff;
   background-color: #ffd400;
