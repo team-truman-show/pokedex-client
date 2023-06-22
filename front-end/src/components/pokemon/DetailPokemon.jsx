@@ -65,15 +65,18 @@ const Pokemon = () => {
           <StyledText>No.{pokemonData.id}</StyledText>
           <NameText>{pokemonData.name}</NameText>
           <StyledText>특성: {pokemonData.feature}</StyledText>
-          타입:
-          <ColoredText color={types[pokemonData.type1]}>
-            {korean[pokemonData.type1]}
-          </ColoredText>
-          {pokemonData.type2 && (
-            <ColoredText color={types[pokemonData.type2]}>
-              {korean[pokemonData.type2]}
+          <StyledText>
+            타입:
+            <ColoredText color={types[pokemonData.type1]}>
+              {korean[pokemonData.type1]}
             </ColoredText>
-          )}
+            {pokemonData.type2 && (
+              <ColoredText color={types[pokemonData.type2]}>
+                {korean[pokemonData.type2]}
+              </ColoredText>
+            )}
+          </StyledText>
+
           <StyledText>설명: {pokemonData.description}</StyledText>
         </SmallContainer2>
       </BigContainer>

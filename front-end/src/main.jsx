@@ -4,7 +4,9 @@ import axios from "axios";
 
 import App from "./App.jsx";
 import "./styles/index.css";
-import { GlobalStyle } from "./styles/global";
+import "nes.css/css/nes.min.css";
+import GlobalStyles from "./styles/GlobalStyles";
+import "./styles/fonts.css";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 axios.defaults.withCredentials = true;
@@ -12,7 +14,7 @@ axios.defaults.withCredentials = true;
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
   <>
-    <GlobalStyle />
+    <GlobalStyles />
     <App />
   </>
   // </React.StrictMode>

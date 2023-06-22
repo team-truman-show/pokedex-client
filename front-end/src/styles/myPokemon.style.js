@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 
 export const Head = styled.div`
   width: 80%;
-  font-family: NeoDunggeunmo, sans-serif, Arial;
+  font-family: DungGeunMo, sans-serif, Arial;
 `;
 
 export const GuardContainer = styled.div`

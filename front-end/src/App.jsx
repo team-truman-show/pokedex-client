@@ -16,7 +16,7 @@ import NotFoundPage from "./pages/404";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "NeoDunggeunmoPro-Regular",
+    fontFamily: "DungGeunMo",
   },
 });
 

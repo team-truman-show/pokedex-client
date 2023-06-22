@@ -62,6 +62,11 @@ const Header = () => {
   //   return <Redirect to="/" />;
   // }
 
+  const onClickReload = () => {
+    // window.location.reload();
+    isLogin ? window.location.replace("/main") : window.location.replace("/");
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     dispatch(logout());
@@ -86,34 +91,35 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <LogoLink to={isLogin ? "/main" : "/"}>
+      {/* <LogoLink to={isLogin ? "/main" : "/"}> */}
+      <LogoLink onClick={onClickReload}>
         <LogoSvg src={pokeLogo} alt="Pokemon Logo" />
       </LogoLink>
       <nav>
-        <NavLink to={isLogin ? "/main" : "/"}>Home</NavLink>
+        <NavLink onClick={onClickReload}>Home</NavLink>
       </nav>
-      <div>
-        {isLogin ? (
-          <Btns>
-            {/* <span>{userName}</span> */}
-            <LoginButton onClick={moveMyPage} type="button">
-              마이페이지
-            </LoginButton>
-            <SignUpButton onClick={handleLogout} type="button">
-              로그아웃
-            </SignUpButton>
-          </Btns>
-        ) : (
-          <Btns>
-            <LoginButton onClick={moveLogin} type="button">
-              로그인
-            </LoginButton>
-            <SignUpButton onClick={moveSignUp} type="button">
-              회원가입
-            </SignUpButton>
-          </Btns>
-        )}
-      </div>
+      {/* <div> */}
+      {isLogin ? (
+        <Btns>
+          {/* <span>{userName}</span> */}
+          <LoginButton onClick={moveMyPage} type="button">
+            마이페이지
+          </LoginButton>
+          <SignUpButton onClick={handleLogout} type="button">
+            로그아웃
+          </SignUpButton>
+        </Btns>
+      ) : (
+        <Btns>
+          <LoginButton onClick={moveLogin} type="button">
+            로그인
+          </LoginButton>
+          <SignUpButton onClick={moveSignUp} type="button">
+            회원가입
+          </SignUpButton>
+        </Btns>
+      )}
+      {/* </div> */}
       {error && <Modal message={error} onClose={closeModal} isError={true} />}
     </HeaderContainer>
   );

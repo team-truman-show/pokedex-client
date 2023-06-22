@@ -15,6 +15,7 @@ export const HeaderContainer = styled.header`
 `;
 
 export const LogoLink = styled(Link)`
+  width: 185px;
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
@@ -27,6 +28,8 @@ export const LogoSvg = styled.img`
 `;
 
 export const NavLink = styled(Link)`
+  font-family: DungGeunMo;
+  font-size: 30px;
   padding: 0.5rem 1rem;
   color: #000;
   text-decoration: none;
@@ -45,7 +48,6 @@ export const Btns = styled.div`
 
 export const LoginButton = styled.button`
   margin-right: 0.5rem;
-  padding: 0rem 0.5rem;
   border: 1px solid #ffd400;
   color: #ffd400;
   background-color: transparent;
