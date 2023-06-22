@@ -37,7 +37,7 @@ export const Body = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-family: NeoDunggeunmo, sans-serif, Arial;
+  font-family: DungGeunMo, sans-serif, Arial;
   padding: 0 20px;
 `;
 

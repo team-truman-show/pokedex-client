@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const SearchBar = styled.form`
-  width: 220px;
+  width: 300px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -53,6 +53,7 @@ export const PostItem = styled(Link)`
   justify-content: center;
   align-items: center;
   width: 250px;
+  // width: 100%;
   height: 300px;
   background-color: #f8f8ff;
   border-radius: 5px;

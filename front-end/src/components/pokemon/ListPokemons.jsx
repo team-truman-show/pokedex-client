@@ -16,7 +16,7 @@ const Main = () => {
   const { pokemons, pokemonName, setPokemonNames, searchPokemon } =
     usePokemonSearch();
 
-  const [visiblePokemons, setVisiblePokemons] = useState(10); // 초기에 10개의 데이터만 보이도록 설정
+  const [visiblePokemons, setVisiblePokemons] = useState(30); // 초기에 10개의 데이터만 보이도록 설정
 
   const handlePokeSearch = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const Main = () => {
 
   const handleLoadMore = () => {
     // 추가로 10개의 데이터를 보이도록 visiblePokemons 값을 증가시킴
-    setVisiblePokemons((prevVisiblePokemons) => prevVisiblePokemons + 10);
+    setVisiblePokemons((prevVisiblePokemons) => prevVisiblePokemons + 30);
   };
 
   return (
@@ -44,7 +44,11 @@ const Main = () => {
         {pokemons &&
           pokemons.slice(0, visiblePokemons).map((data, index) => (
             <PostItem to={`/detail/${data.id}`} key={index}>
-              <Img src={data.imagegif} />
+              {data.imagegif ? (
+                <Img src={data.imagegif} />
+              ) : (
+                <Img src={data.imageurl} />
+              )}
               <div>{data.name}</div>
             </PostItem>
           ))}

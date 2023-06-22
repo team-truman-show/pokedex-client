@@ -25,14 +25,17 @@ export const SmallContainer3 = styled.div`
 `;
 
 export const StyledText = styled.p`
+  font-family: NeoDunggeunmoPro-Regular;
   font-size: 20px;
   white-space: pre-line;
 `;
 export const NameText = styled.h1`
+  font-family: DungGeunMo;
   font-size: 60px;
 `;
 
 export const ColoredText = styled.span`
+  font-family: NeoDunggeunmoPro-Regular;
   position: relative;
   display: inline-block;
   text-align: center;
@@ -61,7 +64,7 @@ export const BalloonContainer = styled.div`
   font-family: NeoDunggeunmoPro-Regular, sans-serif, Arial;
   &:hover {
     transform: scale(2);
-    font-family: NeoDunggeunmo, sans-serif, Arial;
+    font-family: DungGeunMo, sans-serif, Arial;
   }
 `;
 

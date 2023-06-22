@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 
-import { SignUpButton } from "../styles/header.style";
+import "nes.css/css/nes.min.css";
 
 const CustomModal = ({ message, onClose, isError }) => {
   const title = isError ? "앗!" : "야호!";
@@ -26,14 +26,19 @@ const CustomModal = ({ message, onClose, isError }) => {
           boxShadow: 24,
           p: 4,
           textAlign: "center",
-          fontFamily: "NeoDunggeunmoPro-Regular",
+          fontFamily: "DungGeunMo",
         }}
       >
         <Typography id="custom-modal-title" variant="h6" component="h2">
           {title}
         </Typography>
         <Typography id="custom-modal-description">{message}</Typography>
-        <SignUpButton onClick={onClose}>확인</SignUpButton>
+        <button
+          onClick={onClose}
+          className={isError ? "nes-btn is-error" : "nes-btn is-success"}
+        >
+          확인
+        </button>
       </Box>
     </Modal>
   );

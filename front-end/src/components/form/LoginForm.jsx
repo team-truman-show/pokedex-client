@@ -26,7 +26,7 @@ const LoginForm = () => {
     try {
       const data = await loginUser(email, password);
       await localStorage.setItem("token", data.token);
-      console.log("로그인 성공", data.token);
+      // console.log("로그인 성공", data.token);
       // console.log("로그인 성공");
       dispatch(login());
 
@@ -40,6 +40,10 @@ const LoginForm = () => {
   // const handlePassword = () => {
   //   history.push("/PwPage"); // 비밀번호 변경 페이지 경로로 이동
   // };
+
+  const moveToSignUp = () => {
+    history.push("/signup");
+  };
 
   const closeModal = () => {
     setError("");
@@ -68,6 +72,9 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button type="submit">로그인</Button>
+          <Button type="button" onClick={moveToSignUp}>
+            회원가입
+          </Button>
           {/* <Button type="button" onClick={handlePassword}>
             비밀번호 찾기
           </Button> */}
