@@ -10,7 +10,7 @@ import {
   Img,
   PostItem,
   Btn,
-} from "../../styles/listPokemon.style";
+} from "../../styles/pokemon/listPokemon.style";
 
 const Main = () => {
   const { pokemons, pokemonName, setPokemonNames, searchPokemon } =

@@ -5,7 +5,7 @@ import {
   Head,
   GuardContainer,
   MyPokemonGrid,
-} from "../../styles/myPokemon.style";
+} from "../../styles/myPage/myPokemon.style";
 import Card from "./Card";
 
 const MyPokemons = ({ myPokemonData }) => {

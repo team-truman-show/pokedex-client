@@ -3,7 +3,7 @@ import { pokemonDetail } from "../../api/pokemonAPI";
 import { myInfoFetch, myPokeFetch } from "../../api/userAPI";
 import MyInfo from "./Myinfo";
 import MyPokemons from "./MyPokemons";
-import { MainWrapper } from "../../styles/myMain.style";
+import { MainWrapper } from "../../styles/myPage/myMain.style";
 
 const MyPage = () => {
   const [myInfo, setMyInfo] = useState("");

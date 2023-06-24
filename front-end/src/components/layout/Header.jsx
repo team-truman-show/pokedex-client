@@ -20,7 +20,7 @@ import {
   Btns,
   LoginButton,
   SignUpButton,
-} from "../../styles/header.style";
+} from "../../styles/layout/header.style";
 import pokeLogo from "../../assets/monBall.svg";
 import Modal from "../Modal";
 
