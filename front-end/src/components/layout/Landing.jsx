@@ -4,7 +4,7 @@ import {
   BgPage,
   Display,
   MainButton,
-} from "../../styles/Landing.style";
+} from "../../styles/layout/landing.style";
 
 import { useHistory } from "react-router-dom";
 

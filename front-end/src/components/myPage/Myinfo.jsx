@@ -7,7 +7,7 @@ import {
   Ball,
   Title,
   Contents,
-} from "../../styles/myInfo.style";
+} from "../../styles/myPage/myInfo.style";
 
 const MyInfo = ({ myInfo }) => {
   return (

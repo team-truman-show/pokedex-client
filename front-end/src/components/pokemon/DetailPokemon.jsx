@@ -13,7 +13,7 @@ import {
   StyledButton,
   BalloonContainer,
   ParentContainer,
-} from "../../styles/detailPokemon.style";
+} from "../../styles/pokemon/detailPokemon.style";
 import { types, back, korean } from "../../styles/types";
 import monsterball from "../../../public/Image/monsterball.png";
 import Modal from "../Modal";

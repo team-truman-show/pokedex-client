@@ -11,7 +11,7 @@ import {
   Logo,
   Box,
   FormContainer,
-} from "../../styles/userForms.style";
+} from "../../styles/form/userForms.style";
 import Modal from "../Modal";
 
 const LoginForm = () => {

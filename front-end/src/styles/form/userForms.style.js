@@ -1,24 +1,20 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
+  background-image: url(./Image/pixel.jpg);
+  background-size: 100% 100%;
+  height: 100vh;
+  width: 100vw;
 
-    background-image: url(./Image/pixel.jpg);
-    background-size: 100% 100%;
-    height: 100vh;
-    width: 100vw;
-    
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    opacity: 0.8;
-    resizeMode="stretch"
-
-
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+  resizemode: "stretch";
 `;
 
 export const Button = styled.button`
@@ -65,7 +61,7 @@ export const Box = styled.div`
 `;
 
 export const FormContainer = styled.form`
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
