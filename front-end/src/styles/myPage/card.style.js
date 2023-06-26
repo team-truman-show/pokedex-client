@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const MyPokemonImage = styled.img`
   width: 60%;
@@ -8,7 +7,7 @@ export const MyPokemonImage = styled.img`
   object-fit: contain;
 `;
 
-export const MyPokemonCard = styled(Link)`
+export const MyPokemonCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -28,4 +27,21 @@ export const MyPokemonName = styled.h3`
   font-size: 15px;
   margin-bottom: 0.2rem;
   color: black;
+  position: relative;
+`;
+
+export const BringButton = styled.div`
+  width: 50px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #f1f1f1;
+  color: black;
+  position: absolute;
+  left: 90px;
+  text-decoration: none;
+  &:hover {
+    background-color: #ffd400;
+    color: #fff;
+  }
 `;
