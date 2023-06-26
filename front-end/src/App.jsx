@@ -12,6 +12,7 @@ import SignUpPage from "./pages/SignUpPage";
 import MyPage from "./pages/MyPage";
 import LoginPage from "./pages/LoginPage";
 import DetailPage from "./pages/DetailPage";
+import EvolutionPage from "./pages/EvolutionPage";
 import NotFoundPage from "./pages/404";
 
 const theme = createTheme({
@@ -34,6 +35,7 @@ const App = () => {
                 <ProtectedRoute path="/mypage" component={MyPage} />
                 <Route exact path="/detail/:page" component={DetailPage} />
                 <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/evolution" component={EvolutionPage} />
                 <Route component={NotFoundPage} />
               </Switch>
             </Layout>
