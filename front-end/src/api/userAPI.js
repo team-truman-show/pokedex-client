@@ -73,7 +73,9 @@ export const myPokeFetch = async () => {
     Authorization: `Bearer ${token}`,
   };
   try {
-    const response = await axios.get(`${API_URL}/user/mypokemon`, { headers });
+    const response = await axios.get(`${API_URL}/myPokemon/mypokemon`, {
+      headers,
+    });
     return response.data;
   } catch (error) {
     // throw new Error("소유한 포켓몬을 가져오는데 실패했습니다.");
