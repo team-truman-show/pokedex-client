@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -14,7 +13,7 @@ export const HeaderContainer = styled.header`
   z-index: 100;
 `;
 
-export const LogoLink = styled(Link)`
+export const LogoLink = styled.div`
   width: 185px;
   display: flex;
   align-items: center;
@@ -27,7 +26,7 @@ export const LogoSvg = styled.img`
   height: 50px;
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled.div`
   font-family: DungGeunMo;
   font-size: 30px;
   padding: 0.5rem 1rem;

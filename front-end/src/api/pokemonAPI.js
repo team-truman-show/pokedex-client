@@ -27,7 +27,7 @@ export const pokemonCatch = async (pokeid) => {
   };
   try {
     const response = await axios.post(
-      `${API_URL}/pokemon/catchpoke`,
+      `${API_URL}/mypokemon/catchpoke`,
       { pokeid },
       { headers }
     );

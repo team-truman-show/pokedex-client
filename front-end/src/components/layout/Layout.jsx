@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Main } from "../../styles/layout.style";
+import { Main } from "../../styles/layout/layout.style";
 
 export default function Layout({ children }) {
   const location = useLocation();

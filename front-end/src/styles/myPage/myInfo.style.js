@@ -24,7 +24,7 @@ export const Ball = styled.img`
 
 export const Body = styled.div`
   position: relative;
-  top: -310px;
+  top: -260px;
   left: 50px;
 `;
 

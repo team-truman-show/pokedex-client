@@ -7,6 +7,8 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: beige;
+  margin-top: 30px;
+  padding: 50px 0;
 `;
 
 export const Head = styled.div`
