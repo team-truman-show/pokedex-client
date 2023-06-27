@@ -14,6 +14,7 @@ import LoginPage from "./pages/LoginPage";
 import DetailPage from "./pages/DetailPage";
 import EvolutionPage from "./pages/EvolutionPage";
 import NotFoundPage from "./pages/404";
+import BringUpPage from "./pages/BringUpPage";
 
 const theme = createTheme({
   typography: {
@@ -35,6 +36,7 @@ const App = () => {
                 <ProtectedRoute path="/mypage" component={MyPage} />
                 <Route exact path="/detail/:page" component={DetailPage} />
                 <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/bringup/:userid/:pokeid" component={BringUpPage}/>
                 <Route exact path="/evolution" component={EvolutionPage} />
                 <Route component={NotFoundPage} />
               </Switch>

@@ -72,3 +72,20 @@ export const getPokemons = async () => {
     throw new Error(error.response.data.error);
   }
 };
+
+export const pokeGifLike = async (pokeid) => {
+  const token = localStorage.getItem("token");
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+  try {
+    const response = await axios.get(`${API_URL}/myPokemon/bringUp?pokeid=${pokeid}`,{
+      headers,
+      withCredentials: true,
+    });
+    return response.data;
+  }catch(error) {
+    throw new Error(error.response.data.error);
+  }
+
+}
