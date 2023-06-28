@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { myInfoFetch } from '../../api/userAPI';
+import { myPokeFetch } from '../../api/userAPI';
 import {
   MyPokemonCard,
   MyPokemonImage,
@@ -19,10 +19,15 @@ const Card = ({ pokeData }) => {
     event.stopPropagation(); // 이벤트 전파 중지(상세페이지)
 
     try {
-      const userInfo = await myInfoFetch();
+      const myPokeinfo = await myPokeFetch();
       const pokemonid = pokeData.id;
-      const userid = userInfo.id;
-      history.push(`/bringup/${userid}/${pokemonid}`);
+      let mypokeid;
+      for (let i = 0; i < myPokeinfo.length; i++)
+        if (myPokeinfo[i].pokeid == pokemonid) {
+          mypokeid = myPokeinfo[i].id;
+          break;
+        }
+      history.push(`/bringup/${mypokeid}/${pokemonid}`);
     } catch (error) {
       console.error(error); // 에러 처리
     }
