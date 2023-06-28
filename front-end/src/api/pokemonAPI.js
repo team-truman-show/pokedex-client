@@ -4,11 +4,12 @@ import {
   // headers
 } from "../util/auth";
 
+const token = localStorage.getItem("token");
+const headers = {
+  Authorization: `Bearer ${token}`,
+};
+
 export const pokemonDetail = async (id) => {
-  const token = localStorage.getItem("token");
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
   try {
     const response = await axios.get(`${API_URL}/pokemon/dbidsearch?id=${id}`, {
       headers,
@@ -21,10 +22,6 @@ export const pokemonDetail = async (id) => {
 };
 
 export const pokemonCatch = async (pokeid) => {
-  const token = localStorage.getItem("token");
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
   try {
     const response = await axios.post(
       `${API_URL}/mypokemon/catchpoke`,
@@ -40,10 +37,6 @@ export const pokemonCatch = async (pokeid) => {
 };
 
 export const pokemonSearch = async (pokename) => {
-  const token = localStorage.getItem("token");
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
   try {
     const response = await axios.get(
       `${API_URL}/pokemon/namesearch?name=${pokename}`,
@@ -57,10 +50,6 @@ export const pokemonSearch = async (pokename) => {
 };
 
 export const getPokemons = async () => {
-  const token = localStorage.getItem("token");
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
   try {
     const response = await axios.get(`${API_URL}/pokemon/page`, {
       headers,
@@ -74,18 +63,39 @@ export const getPokemons = async () => {
 };
 
 export const pokeGifLike = async (pokeid) => {
-  const token = localStorage.getItem("token");
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
   try {
     const response = await axios.get(`${API_URL}/myPokemon/bringUp?pokeid=${pokeid}`,{
       headers,
-      withCredentials: true,
     });
     return response.data;
   }catch(error) {
     throw new Error(error.response.data.error);
   }
+};
 
-}
+export const pokeCleanliness = async (pokeid,cleanliness) => {
+    try{
+      const response = await axios.fetch(`${API_URL}/myPokemon/cleanliness`,{pokeid},{cleanliness},{headers});
+      return response.data;
+    } catch(error) {
+      throw new Error(error.response.data.error);
+    }
+};
+
+export const pokeMomentum = async (pokeid,momentum) => {
+  try{
+    const response = await axios.fetch(`${API_URL}/myPokemon/momentum`,{pokeid},{momentum},{headers});
+    return response.data;
+  } catch(error) {
+    throw new Error(error.response.data.error);
+  }
+};
+
+export const pokeSatitety = async (pokeid,satitety) => {
+  try{
+    const response = await axios.fetch(`${API_URL}/myPokemon/satitety`,{pokeid},{satitety},{headers});
+    return response.data;
+  } catch(error){
+    throw new Error(error.response.data.error);
+  }
+};
