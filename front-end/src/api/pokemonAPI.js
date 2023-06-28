@@ -65,12 +65,11 @@ export const getPokemons = async () => {
 export const pokeStatus = async (pokeid) => {
   try {
     const response = await axios.get(
-      `${API_URL}/myPokemon/bringUp?pokeid=${pokeid}`,
+      `${API_URL}/myPokemon/bringUp?id=${pokeid}`,
       {
         headers,
       }
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new Error(error.response.data.error);
@@ -79,10 +78,9 @@ export const pokeStatus = async (pokeid) => {
 
 export const pokeCleanliness = async (pokeid, cleanliness) => {
   try {
-    const response = await axios.fetch(
+    const response = await axios.patch(
       `${API_URL}/myPokemon/cleanliness`,
-      { pokeid },
-      { cleanliness },
+      { pokeid, cleanliness },
       { headers }
     );
     return response.data;
@@ -95,8 +93,7 @@ export const pokeMomentum = async (pokeid, momentum) => {
   try {
     const response = await axios.fetch(
       `${API_URL}/myPokemon/momentum`,
-      { pokeid },
-      { momentum },
+      { pokeid, momentum },
       { headers }
     );
     return response.data;
@@ -109,8 +106,7 @@ export const pokeSatitety = async (pokeid, satitety) => {
   try {
     const response = await axios.fetch(
       `${API_URL}/myPokemon/satitety`,
-      { pokeid },
-      { satitety },
+      { pokeid, satitety },
       { headers }
     );
     return response.data;
