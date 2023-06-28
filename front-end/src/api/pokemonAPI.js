@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   API_URL,
   // headers
-} from "../util/auth";
+} from '../util/auth';
 
-const token = localStorage.getItem("token");
+const token = localStorage.getItem('token');
 const headers = {
   Authorization: `Bearer ${token}`,
 };
@@ -62,40 +62,59 @@ export const getPokemons = async () => {
   }
 };
 
-export const pokeGifLike = async (pokeid) => {
+export const pokeStatus = async (pokeid) => {
   try {
-    const response = await axios.get(`${API_URL}/myPokemon/bringUp?pokeid=${pokeid}`,{
-      headers,
-    });
+    const response = await axios.get(
+      `${API_URL}/myPokemon/bringUp?pokeid=${pokeid}`,
+      {
+        headers,
+      }
+    );
+    console.log(response.data);
     return response.data;
-  }catch(error) {
+  } catch (error) {
     throw new Error(error.response.data.error);
   }
 };
 
-export const pokeCleanliness = async (pokeid,cleanliness) => {
-    try{
-      const response = await axios.fetch(`${API_URL}/myPokemon/cleanliness`,{pokeid},{cleanliness},{headers});
-      return response.data;
-    } catch(error) {
-      throw new Error(error.response.data.error);
-    }
-};
-
-export const pokeMomentum = async (pokeid,momentum) => {
-  try{
-    const response = await axios.fetch(`${API_URL}/myPokemon/momentum`,{pokeid},{momentum},{headers});
+export const pokeCleanliness = async (pokeid, cleanliness) => {
+  try {
+    const response = await axios.fetch(
+      `${API_URL}/myPokemon/cleanliness`,
+      { pokeid },
+      { cleanliness },
+      { headers }
+    );
     return response.data;
-  } catch(error) {
+  } catch (error) {
     throw new Error(error.response.data.error);
   }
 };
 
-export const pokeSatitety = async (pokeid,satitety) => {
-  try{
-    const response = await axios.fetch(`${API_URL}/myPokemon/satitety`,{pokeid},{satitety},{headers});
+export const pokeMomentum = async (pokeid, momentum) => {
+  try {
+    const response = await axios.fetch(
+      `${API_URL}/myPokemon/momentum`,
+      { pokeid },
+      { momentum },
+      { headers }
+    );
     return response.data;
-  } catch(error){
+  } catch (error) {
+    throw new Error(error.response.data.error);
+  }
+};
+
+export const pokeSatitety = async (pokeid, satitety) => {
+  try {
+    const response = await axios.fetch(
+      `${API_URL}/myPokemon/satitety`,
+      { pokeid },
+      { satitety },
+      { headers }
+    );
+    return response.data;
+  } catch (error) {
     throw new Error(error.response.data.error);
   }
 };

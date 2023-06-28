@@ -1,12 +1,12 @@
-import PropTypes from "prop-types";
-import { useHistory } from "react-router-dom";
-import { myInfoFetch } from "../../api/userAPI";
+import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import { myInfoFetch } from '../../api/userAPI';
 import {
   MyPokemonCard,
   MyPokemonImage,
   MyPokemonName,
   BringButton,
-} from "../../styles/myPage/card.style";
+} from '../../styles/myPage/card.style';
 
 const Card = ({ pokeData }) => {
   const history = useHistory();
@@ -21,7 +21,7 @@ const Card = ({ pokeData }) => {
     try {
       const userInfo = await myInfoFetch();
       const pokemonid = pokeData.id;
-      const userid = userInfo.userid;
+      const userid = userInfo.id;
       history.push(`/bringup/${userid}/${pokemonid}`);
     } catch (error) {
       console.error(error); // 에러 처리
@@ -30,7 +30,7 @@ const Card = ({ pokeData }) => {
 
   return (
     <MyPokemonCard onClick={handleCardClick} key={pokeData.id}>
-      <p style={{ color: "black" }}>No. {pokeData.id}</p>
+      <p style={{ color: 'black' }}>No. {pokeData.id}</p>
       <MyPokemonImage
         src={pokeData.imagegif ? pokeData.imagegif : pokeData.imageurl}
         alt="Pokemon"
