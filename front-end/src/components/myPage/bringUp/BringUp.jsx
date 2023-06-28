@@ -5,6 +5,9 @@ import {
   BigBox,
   ProgressBox,
   ButtonBox,
+    SmallBox,
+} from '../../../styles/myPage/bringUp/bringUp.style';
+
 } from "../../../styles/myPage/bringUp/bringUp.style";
 import CustomModal from "./CustomModal";
 import EvolutionModal from "./EvolutionModal";
@@ -12,8 +15,9 @@ import EvolutionModal from "./EvolutionModal";
 import { pokeFull, pokeIntimate, pokeClean } from "../../../api/pokemonAPI";
 import { pokemonDetail, pokeStatus } from "../../../api/pokemonAPI";
 
+
 const BringUp = () => {
-  const { pokeid } = useParams();
+  const { mypokeid, pokemonid } = useParams();
   const [full, setFull] = useState(50);
   const [clean, setClean] = useState(50);
   const [intimate, setIntimate] = useState(50);
@@ -34,9 +38,9 @@ const BringUp = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const mypoke = await pokemonDetail(pokeid);
+        const mypoke = await pokemonDetail(pokemonid);
         setPokemonData(mypoke);
-        // const status = await pokeStatus(pokeid);
+        const status = await pokeStatus(pokemonid);
         // setFull(status.full);
         // setClean(status.clean);
         // setIntimate(status.intimate);
@@ -173,7 +177,7 @@ const BringUp = () => {
             />
           )}
         </BigBox>
-        <BigBox>
+        <SmallBox>
           <ButtonBox>
             <div
               style={{
@@ -220,7 +224,7 @@ const BringUp = () => {
               ) : null}
             </div>
           </ButtonBox>
-        </BigBox>
+        </SmallBox>
       </div>
 
       <CustomModal

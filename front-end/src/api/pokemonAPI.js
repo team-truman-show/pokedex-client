@@ -66,7 +66,7 @@ export const getPokemons = async () => {
 export const pokeStatus = async (pokeid) => {
   try {
     const response = await axios.get(
-      `${API_URL}/myPokemon/bringUp?pokeid=${pokeid}`,
+      `${API_URL}/myPokemon/bringUp?id=${pokeid}`,
       {
         headers,
       }
@@ -81,6 +81,7 @@ export const pokeStatus = async (pokeid) => {
 export const pokeFull = async (pokeid, full) => {
   try {
     const response = await axios.patch(
+
       `${API_URL}/bringup/pokefull`,
       { pokeid, full },
       { headers }
@@ -94,9 +95,11 @@ export const pokeFull = async (pokeid, full) => {
 //친밀도
 export const pokeIntimate = async (pokeid, intimate) => {
   try {
+
     const response = await axios.patch(
       `${API_URL}/bringup/pokelike`,
       { pokeid, intimate },
+
       { headers }
     );
     return response.data;
@@ -107,9 +110,11 @@ export const pokeIntimate = async (pokeid, intimate) => {
 //청결도
 export const pokeClean = async (pokeid, clean) => {
   try {
+
     const response = await axios.patch(
       `${API_URL}/bringup/pokeclean`,
       { pokeid, clean },
+
       { headers }
     );
     return response.data;
