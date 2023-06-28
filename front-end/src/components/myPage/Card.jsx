@@ -1,12 +1,14 @@
-import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
-import { myPokeFetch } from '../../api/userAPI';
+
+import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
+import { myInfoFetch } from "../../api/userAPI";
+
 import {
   MyPokemonCard,
   MyPokemonImage,
   MyPokemonName,
   BringButton,
-} from '../../styles/myPage/card.style';
+} from "../../styles/myPage/card.style";
 
 const Card = ({ pokeData }) => {
   const history = useHistory();
@@ -35,7 +37,7 @@ const Card = ({ pokeData }) => {
 
   return (
     <MyPokemonCard onClick={handleCardClick} key={pokeData.id}>
-      <p style={{ color: 'black' }}>No. {pokeData.id}</p>
+      <p style={{ color: "black" }}>No. {pokeData.id}</p>
       <MyPokemonImage
         src={pokeData.imagegif ? pokeData.imagegif : pokeData.imageurl}
         alt="Pokemon"
