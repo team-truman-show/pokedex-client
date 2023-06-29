@@ -1,14 +1,14 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import {
   Wrapper,
   Head,
   GuardContainer,
   MyPokemonGrid,
-} from "../../styles/myPage/myPokemon.style";
-import Card from "./Card";
+} from '../../styles/myPage/myPokemon.style';
+import Card from './Card';
 
-const MyPokemons = ({ myPokemonData }) => {
+const MyPokemons = ({ myPokemonData, myPokeIds }) => {
   return (
     <Wrapper>
       <Head>
@@ -17,8 +17,12 @@ const MyPokemons = ({ myPokemonData }) => {
       </Head>
       <GuardContainer>
         <MyPokemonGrid>
-          {myPokemonData.map((pokemonData) => (
-            <Card key={pokemonData.id} pokeData={pokemonData} />
+          {myPokemonData.map((pokemonData, index) => (
+            <Card
+              key={myPokeIds[index]}
+              pokeData={pokemonData}
+              myPokeId={myPokeIds[index]}
+            />
           ))}
         </MyPokemonGrid>
       </GuardContainer>

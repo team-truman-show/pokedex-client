@@ -47,7 +47,7 @@ const MyPage = () => {
   return (
     <MainWrapper>
       <MyInfo myInfo={myInfo} />
-      <MyPokemons myPokemonData={myPokeData} />
+      <MyPokemons myPokemonData={myPokeData} myPokeIds={myPokeIds} />
     </MainWrapper>
   );
 };
