@@ -3,13 +3,11 @@ export const BigBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  height: 350px;
 `;
 
 export const SmallBox = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 export const ProgressBox = styled.div`
   display: flex;

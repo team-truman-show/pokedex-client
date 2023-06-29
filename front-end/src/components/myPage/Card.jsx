@@ -1,14 +1,18 @@
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
+
 import { useState } from "react";
 import { pokeLetgo } from "../../api/pokemonAPI";
 import {
   MyPokemonCard,
+  BtnWrapper,
   MyPokemonImage,
   MyPokemonName,
   BringButton,
 } from "../../styles/myPage/card.style";
+
 import GoodByeModal from "../myPage/bringUp/GoodByeModal";
+
 
 const Card = ({ pokeData, myPokeId }) => {
   const [isGoodByModalOpen, setIsGoodByModalOpen] = useState(false);
@@ -58,6 +62,7 @@ const Card = ({ pokeData, myPokeId }) => {
   };
 
   return (
+
     <div>
       <MyPokemonCard onClick={handleCardClick} key={myPokeId}>
         <p style={{ color: "black" }}>No. {pokeData.id}</p>
@@ -71,7 +76,7 @@ const Card = ({ pokeData, myPokeId }) => {
           </BringButton>
           <MyPokemonName>
             {pokeData.name}
-            <BringButton onClick={handleBringUp}>육성</BringButton>
+            <BringButton onClick={handleBringUp}>키우기</BringButton>
           </MyPokemonName>
         </div>
       </MyPokemonCard>
@@ -86,6 +91,7 @@ const Card = ({ pokeData, myPokeId }) => {
         onConfirm={handleLetgo}
       />
     </div>
+
   );
 };
 

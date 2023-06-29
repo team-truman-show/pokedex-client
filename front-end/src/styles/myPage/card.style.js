@@ -23,23 +23,26 @@ export const MyPokemonCard = styled.div`
   }
 `;
 
-export const MyPokemonName = styled.h3`
-  font-size: 15px;
-  margin-bottom: 0.2rem;
-  color: black;
-  position: relative;
+export const BtnWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  justify-content: space-around;
+  align-items: center;
 `;
 
-export const BringButton = styled.div`
-  width: 50px;
+export const MyPokemonName = styled.div`
+  font-size: 20px;
+  color: black;
   text-align: center;
-  display: inline-block;
+`;
+
+export const BringButton = styled.button`
+  width: 80px;
   border-radius: 50px;
   background-color: #f1f1f1;
   color: black;
-  position: absolute;
-  left: 90px;
-  text-decoration: none;
+  text-align: center;
   &:hover {
     background-color: #ffd400;
     color: #fff;
