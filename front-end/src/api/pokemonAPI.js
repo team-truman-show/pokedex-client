@@ -74,14 +74,14 @@ export const getPokemons = async () => {
   }
 };
 //육성페이지
-export const pokeStatus = async (pokeid) => {
+export const pokeStatus = async (mypokeid) => {
   const token = localStorage.getItem("token");
   const headers = {
     Authorization: `Bearer ${token}`,
   };
   try {
     const response = await axios.get(
-      `${API_URL}/myPokemon/bringUp?id=${pokeid}`,
+      `${API_URL}/myPokemon/bringUp?id=${mypokeid}`,
       {
         headers,
       }
