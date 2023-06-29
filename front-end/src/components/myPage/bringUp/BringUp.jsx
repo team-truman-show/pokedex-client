@@ -62,7 +62,6 @@ const BringUp = () => {
     if (full + 10 <= 100) setFull(full + 10);
     setTimeout(() => {
       setIsEating(false);
-      setIsModalOpen(false);
       if (full + 10 <= 100) pokeFull(mypokeid, full + 10);
     }, 3000);
     console.log("🚀 ~ file: BringUp.jsx:68 ~ setTimeout ~ full:", full);
@@ -90,7 +89,6 @@ const BringUp = () => {
     if (intimate + 10 <= 100) setIntimate(intimate + 10);
     setTimeout(() => {
       setIsWalking(false);
-      setIsModalOpen(false);
       if (intimate + 10 <= 100) pokeIntimate(mypokeid, intimate + 10);
     }, 3000);
     console.log("🚀 ~ file: BringUp.jsx:87 ~ setTimeout ~ intimate:", intimate);
@@ -120,7 +118,6 @@ const BringUp = () => {
     }
     setTimeout(() => {
       setIsBathing(false);
-      setIsModalOpen(false);
       if (clean + 10 <= 100) pokeClean(mypokeid, clean + 10);
     }, 3000);
     console.log("🚀 ~ file: BringUp.jsx:109 ~ setTimeout ~ clean:", clean);
