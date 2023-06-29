@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
-import { myInfoFetch, myPokeFetch } from '../../api/userAPI';
-import { pokeLetgo } from '../../api/pokemonAPI';
+import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
+import { pokeLetgo } from "../../api/pokemonAPI";
 import {
   MyPokemonCard,
+  BtnWrapper,
   MyPokemonImage,
   MyPokemonName,
   BringButton,
-} from '../../styles/myPage/card.style';
+} from "../../styles/myPage/card.style";
 
 const Card = ({ pokeData, myPokeId }) => {
   const history = useHistory();
@@ -42,18 +42,16 @@ const Card = ({ pokeData, myPokeId }) => {
 
   return (
     <MyPokemonCard onClick={handleCardClick} key={myPokeId}>
-      <p style={{ color: 'black' }}>No. {pokeData.id}</p>
+      <div style={{ color: "black" }}>No. {pokeData.id}</div>
       <MyPokemonImage
         src={pokeData.imagegif ? pokeData.imagegif : pokeData.imageurl}
         alt="Pokemon"
       />
-      <div>
-        <button onClick={handleXClick}>X</button>
-        <MyPokemonName>
-          {pokeData.name}
-          <BringButton onClick={handleBringUp}>육성</BringButton>
-        </MyPokemonName>
-      </div>
+      <MyPokemonName>{pokeData.name}</MyPokemonName>
+      <BtnWrapper>
+        <BringButton onClick={handleXClick}>놓아주기</BringButton>
+        <BringButton onClick={handleBringUp}>키우기</BringButton>
+      </BtnWrapper>
     </MyPokemonCard>
   );
 };
@@ -65,6 +63,7 @@ Card.propTypes = {
     imageurl: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  myPokeId: PropTypes.number.isRequired,
 };
 
 export default Card;
