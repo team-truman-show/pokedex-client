@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
-import { pokemonDetail } from "../../api/pokemonAPI";
-import { myInfoFetch, myPokeFetch } from "../../api/userAPI";
-import MyInfo from "./Myinfo";
-import MyPokemons from "./MyPokemons";
-import { MainWrapper } from "../../styles/myPage/myMain.style";
+import { useState, useEffect } from 'react';
+import { pokemonDetail } from '../../api/pokemonAPI';
+import { myInfoFetch, myPokeFetch } from '../../api/userAPI';
+import MyInfo from './Myinfo';
+import MyPokemons from './MyPokemons';
+import { MainWrapper } from '../../styles/myPage/myMain.style';
 
 const MyPage = () => {
-  const [myInfo, setMyInfo] = useState("");
+  const [myInfo, setMyInfo] = useState('');
   const [myPokemons, setMyPokemons] = useState([]);
   const [myPokeData, setMyPokeData] = useState([]);
+  const [myPokeIds, setMyPokeIds] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,9 +17,13 @@ const MyPage = () => {
         const myData = await myInfoFetch();
         setMyInfo(myData);
         const myPokes = await myPokeFetch();
-        setMyPokemons(myPokes);
+        const pokesId = myPokes.map((item) => item.pokeid);
+        // console.log(myPokes);
+        const myPokeid = myPokes.map((item) => item.id);
+        setMyPokemons(pokesId);
+        setMyPokeIds(myPokeid);
       } catch (error) {
-        console.error("API 호출 실패:", error.message);
+        console.error('API 호출 실패:', error.message);
       }
     };
 
@@ -30,7 +35,6 @@ const MyPage = () => {
       const pokeDataArr = await Promise.all(
         myPokemons.map((id) => pokemonDetail(id))
       );
-
       setMyPokeData(pokeDataArr);
     };
 

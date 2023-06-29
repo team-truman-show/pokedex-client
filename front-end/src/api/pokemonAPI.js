@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   API_URL,
   // headers
-} from "../util/auth";
+} from '../util/auth';
 
-const token = localStorage.getItem("token");
+const token = localStorage.getItem('token');
 const headers = {
   Authorization: `Bearer ${token}`,
 };
@@ -14,7 +14,6 @@ export const pokemonDetail = async (id) => {
     const response = await axios.get(`${API_URL}/pokemon/dbidsearch?id=${id}`, {
       headers,
     });
-
     return response.data;
   } catch (error) {
     // throw new Error("포켓몬 정보를 가져오는데 실패했습니다.");
@@ -78,12 +77,11 @@ export const pokeStatus = async (pokeid) => {
 };
 
 //포만도
-export const pokeFull = async (pokeid, full) => {
+export const pokeFull = async (mypokeid, full) => {
   try {
     const response = await axios.patch(
-
-      `${API_URL}/bringup/pokefull`,
-      { pokeid, full },
+      `${API_URL}/bringup/full`,
+      { mypokeid, full },
       { headers }
     );
 
@@ -93,12 +91,11 @@ export const pokeFull = async (pokeid, full) => {
   }
 };
 //친밀도
-export const pokeIntimate = async (pokeid, intimate) => {
+export const pokeIntimate = async (mypokeid, intimate) => {
   try {
-
     const response = await axios.patch(
-      `${API_URL}/bringup/pokelike`,
-      { pokeid, intimate },
+      `${API_URL}/bringup/intimate`,
+      { mypokeid, intimate },
 
       { headers }
     );
@@ -108,13 +105,23 @@ export const pokeIntimate = async (pokeid, intimate) => {
   }
 };
 //청결도
-export const pokeClean = async (pokeid, clean) => {
+export const pokeClean = async (mypokeid, clean) => {
   try {
-
     const response = await axios.patch(
-      `${API_URL}/bringup/pokeclean`,
-      { pokeid, clean },
+      `${API_URL}/bringup/clean`,
+      { mypokeid, clean },
+      { headers }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.error);
+  }
+};
 
+export const pokeEvolve = async (mypokeid, pokeid) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/pokemon/evolve?mypokeid=${mypokeid}&pokeid=${pokeid}`,
       { headers }
     );
     return response.data;
