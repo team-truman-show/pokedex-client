@@ -18,7 +18,6 @@ const MyPage = () => {
         setMyInfo(myData);
         const myPokes = await myPokeFetch();
         const pokesId = myPokes.map((item) => item.pokeid);
-        // console.log(myPokes);
         const myPokeid = myPokes.map((item) => item.id);
         setMyPokemons(pokesId);
         setMyPokeIds(myPokeid);

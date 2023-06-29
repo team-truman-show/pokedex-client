@@ -180,7 +180,11 @@ const BringUp = () => {
         <BigBox>
           {PokemonData && (
             <MyPokemonImage
-              src={PokemonData.imagegif}
+              src={
+                PokemonData.imagegif
+                  ? PokemonData.imagegif
+                  : PokemonData.imageurl
+              }
               className={`pokemon-image ${isEating ? 'eating' : ''} ${
                 isMoving ? 'moving-image' : ''
               } ${isWalking ? 'walking' : ''} ${isBathing ? 'bathing' : ''}`}
