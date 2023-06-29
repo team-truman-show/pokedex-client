@@ -17,7 +17,6 @@ export const MyPokemonCard = styled.div`
   background-color: #f8f8ff;
   border-radius: 5px;
   overflow: hidden;
-
   &:hover ${MyPokemonImage} {
     transform: scale(1.4);
   }
