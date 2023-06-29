@@ -1,14 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
 export const BigBox = styled.div`
+  width: 100%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 350px;
 `;
 
-export const SmallBox = styled.div`
-  display: flex;
-`;
 export const ProgressBox = styled.div`
   display: flex;
   width: 100%;
@@ -19,7 +18,17 @@ export const ButtonBox = styled.div`
   width: 100%;
   justify-content: center;
 `;
+
+export const PokeImgWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const MyPokemonImage = styled.img`
+  height: 100%;
   width: 20%;
   transition: transform 0.3s;
   object-fit: contain;
