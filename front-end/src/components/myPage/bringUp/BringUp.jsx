@@ -61,10 +61,10 @@ const BringUp = () => {
     setIsEating(true);
     setIsModalOpen(true);
     if (full + 5 <= 100) setFull(full + 10);
-    await pokeFull(mypokeid, full);
     setTimeout(() => {
       setIsEating(false);
       setIsModalOpen(false);
+      pokeFull(mypokeid, full + 10);
     }, 3000);
     setModalContent({
       title: '밥먹기',
@@ -79,10 +79,10 @@ const BringUp = () => {
     setIsWalking(true);
     setIsModalOpen(true);
     if (intimate + 10 <= 100) setIntimate(intimate + 10);
-    await pokeIntimate(mypokeid, intimate);
     setTimeout(() => {
       setIsWalking(false);
       setIsModalOpen(false);
+      pokeIntimate(mypokeid, intimate + 10);
     }, 3000);
     setModalContent({
       title: '산책하기',
@@ -97,10 +97,10 @@ const BringUp = () => {
     setIsModalOpen(true);
     setIsBathing(true);
     if (clean + 5 <= 100) setClean(clean + 10);
-    await pokeClean(mypokeid, clean);
     setTimeout(() => {
       setIsBathing(false);
       setIsModalOpen(false);
+      pokeClean(mypokeid, clean + 10);
     }, 3000);
     setModalContent({
       title: '목욕하기',
