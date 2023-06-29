@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import {
   Wrapper,
   Head,
   GuardContainer,
   MyPokemonGrid,
-} from '../../styles/myPage/myPokemon.style';
-import Card from './Card';
+} from "../../styles/myPage/myPokemon.style";
+import Card from "./Card";
 
 const MyPokemons = ({ myPokemonData, myPokeIds }) => {
   return (

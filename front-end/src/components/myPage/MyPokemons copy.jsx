@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import {
   StyledLink,
   MyPokemonCard,
@@ -6,7 +6,7 @@ import {
   MyPokemonName,
   GuardContainer,
   MyPokemonGrid,
-} from '../../styles/myPage/myPage.style';
+} from "../../styles/myPage/myPage.style";
 
 const MyPokemons = ({ myPokemonData, myPokeIds }) => {
   return (
@@ -22,7 +22,7 @@ const MyPokemons = ({ myPokemonData, myPokeIds }) => {
               key={myPokeIds[index].id}
             >
               <MyPokemonCard>
-                <p style={{ color: 'black' }}>No. {pokemonData.id}</p>
+                <p style={{ color: "black" }}>No. {pokemonData.id}</p>
                 <MyPokemonImage src={pokemonData.imageGif} alt="Pokemon" />
                 <MyPokemonName>이름: {pokemonData.name}</MyPokemonName>
               </MyPokemonCard>
@@ -36,6 +36,7 @@ const MyPokemons = ({ myPokemonData, myPokeIds }) => {
 
 MyPokemons.propTypes = {
   myPokemonData: PropTypes.array.isRequired,
+  myPokeIds: PropTypes.number.isRequired,
 };
 
 export default MyPokemons;

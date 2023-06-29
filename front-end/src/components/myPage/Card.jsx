@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
+
+import { useState } from "react";
 import { pokeLetgo } from "../../api/pokemonAPI";
 import {
   MyPokemonCard,
@@ -9,50 +11,87 @@ import {
   BringButton,
 } from "../../styles/myPage/card.style";
 
+import GoodByeModal from "../myPage/bringUp/GoodByeModal";
+
+
 const Card = ({ pokeData, myPokeId }) => {
+  const [isGoodByModalOpen, setIsGoodByModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    title: "",
+    message: "",
+    isError: false,
+    imageSrc: "",
+  });
+
   const history = useHistory();
   const handleCardClick = () => {
     history.push(`/detail/${pokeData.id}`);
   };
-  const handleXClick = async (event) => {
+
+  // 놓아주기 모달 열기
+  const handleGoodByonClick = (event) => {
     event.stopPropagation();
+    setIsGoodByModalOpen(true);
+    setModalContent({
+      title: "놓아주기",
+      message: "진짜로 놓아주시겠습니까?",
+      isError: false,
+      imageSrc: "",
+    });
+  };
+
+  // 놓아주기
+  const handleLetgo = async () => {
     try {
       await pokeLetgo(myPokeId);
+      setIsGoodByModalOpen(false);
       window.location.reload();
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
-  const handleBringUp = async (event) => {
-    event.stopPropagation(); // 이벤트 전파 중지(상세페이지)
 
-    try {
-      const pokemonid = pokeData.id;
-      let mypokeid = myPokeId;
-      // for (let i = 0; i < myPokeinfo.length; i++)
-      //   if (myPokeinfo[i].pokeid == pokemonid) {
-      //     mypokeid = myPokeinfo[i].id;
-      //     break;
-      //   }
-      history.push(`/bringup/${mypokeid}/${pokemonid}`);
-    } catch (error) {
-      console.error(error); // 에러 처리
-    }
+  const handleBringUp = (event) => {
+    event.stopPropagation(); // 이벤트 전파 중지(상세페이지)
+    const pokemonid = pokeData.id;
+    history.push(`/bringup/${myPokeId}/${pokemonid}`);
+  };
+
+  const handleGoodByeModalClose = () => {
+    setIsGoodByModalOpen(false);
   };
 
   return (
-    <MyPokemonCard onClick={handleCardClick} key={myPokeId}>
-      <div style={{ color: "black" }}>No. {pokeData.id}</div>
-      <MyPokemonImage
-        src={pokeData.imagegif ? pokeData.imagegif : pokeData.imageurl}
-        alt="Pokemon"
+
+    <div>
+      <MyPokemonCard onClick={handleCardClick} key={myPokeId}>
+        <p style={{ color: "black" }}>No. {pokeData.id}</p>
+        <MyPokemonImage
+          src={pokeData.imagegif ? pokeData.imagegif : pokeData.imageurl}
+          alt="Pokemon"
+        />
+        <div>
+          <BringButton type="button" onClick={handleGoodByonClick}>
+            놓아주기
+          </BringButton>
+          <MyPokemonName>
+            {pokeData.name}
+            <BringButton onClick={handleBringUp}>키우기</BringButton>
+          </MyPokemonName>
+        </div>
+      </MyPokemonCard>
+      <GoodByeModal
+        isOpen={isGoodByModalOpen}
+        onClose={handleGoodByeModalClose}
+        title={modalContent.title}
+        myPokeId={myPokeId}
+        message={modalContent.message}
+        isError={modalContent.isError}
+        imageSrc={modalContent.imageSrc}
+        onConfirm={handleLetgo}
       />
-      <MyPokemonName>{pokeData.name}</MyPokemonName>
-      <BtnWrapper>
-        <BringButton onClick={handleXClick}>놓아주기</BringButton>
-        <BringButton onClick={handleBringUp}>키우기</BringButton>
-      </BtnWrapper>
-    </MyPokemonCard>
+    </div>
+
   );
 };
 
@@ -65,5 +104,4 @@ Card.propTypes = {
   }).isRequired,
   myPokeId: PropTypes.number.isRequired,
 };
-
 export default Card;
