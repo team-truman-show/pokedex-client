@@ -64,13 +64,38 @@ const EvolutionModal = ({
         <Typography id="custom-modal-description">{message}</Typography>
         <Button
           onClick={handleClick}
-          className={isError ? "nes-btn is-error" : "nes-btn is-success"}
+          variant={isError ? "contained" : "outlined"}
+          sx={{
+            border: "2px solid black",
+            marginTop: "1rem",
+            padding: "0.5rem 1rem",
+            marginRight: "20px",
+            backgroundColor: isError ? "#FF0000" : "#00FF00",
+            color: "#FFFFFF",
+            boxShadow: "none",
+            "&:hover": {
+              boxShadow: "none",
+              backgroundColor: isError ? "#CC0000" : "#00CC00",
+            },
+          }}
         >
           진 화
         </Button>
         <Button
           onClick={onClose}
-          className={isError ? "nes-btn is-error" : "nes-btn is-success"}
+          variant={isError ? "contained" : "outlined"}
+          sx={{
+            border: "2px solid black",
+            marginTop: "1rem",
+            padding: "0.5rem 1rem",
+            backgroundColor: isError ? "#FF0000" : "#FF0000",
+            color: "#FFFFFF",
+            boxShadow: "none",
+            "&:hover": {
+              boxShadow: "none",
+              backgroundColor: isError ? "#CC0000" : "#CC0000",
+            },
+          }}
         >
           취 소
         </Button>
