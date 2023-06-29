@@ -4,12 +4,12 @@ import {
   // headers
 } from '../util/auth';
 
-const token = localStorage.getItem('token');
-const headers = {
-  Authorization: `Bearer ${token}`,
-};
 //포켓몬 세부정보
 export const pokemonDetail = async (id) => {
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.get(`${API_URL}/pokemon/dbidsearch?id=${id}`, {
       headers,
@@ -22,6 +22,10 @@ export const pokemonDetail = async (id) => {
 };
 //포켓몬 잡기
 export const pokemonCatch = async (pokeid) => {
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.post(
       `${API_URL}/mypokemon/catchpoke`,
@@ -37,6 +41,10 @@ export const pokemonCatch = async (pokeid) => {
 };
 //포켓몬 이름으로 찾기
 export const pokemonSearch = async (pokename) => {
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.get(
       `${API_URL}/pokemon/namesearch?name=${pokename}`,
@@ -50,6 +58,10 @@ export const pokemonSearch = async (pokename) => {
 };
 //전체 포켓몬
 export const getPokemons = async () => {
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.get(`${API_URL}/pokemon/page`, {
       headers,
@@ -63,6 +75,10 @@ export const getPokemons = async () => {
 };
 //육성페이지
 export const pokeStatus = async (pokeid) => {
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.get(
       `${API_URL}/myPokemon/bringUp?id=${pokeid}`,
@@ -78,6 +94,10 @@ export const pokeStatus = async (pokeid) => {
 
 //포만도
 export const pokeFull = async (mypokeid, full) => {
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.patch(
       `${API_URL}/bringup/full`,
@@ -92,6 +112,10 @@ export const pokeFull = async (mypokeid, full) => {
 };
 //친밀도
 export const pokeIntimate = async (mypokeid, intimate) => {
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.patch(
       `${API_URL}/bringup/intimate`,
@@ -106,6 +130,10 @@ export const pokeIntimate = async (mypokeid, intimate) => {
 };
 //청결도
 export const pokeClean = async (mypokeid, clean) => {
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.patch(
       `${API_URL}/bringup/clean`,
@@ -119,6 +147,10 @@ export const pokeClean = async (mypokeid, clean) => {
 };
 
 export const pokeEvolve = async (mypokeid, pokeid) => {
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
     const response = await axios.get(
       `${API_URL}/pokemon/evolve?mypokeid=${mypokeid}&pokeid=${pokeid}`,
