@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {
   MyPokemonImage,
   BigBox,
   ProgressBox,
   ButtonBox,
   SmallBox,
-} from '../../../styles/myPage/bringUp/bringUp.style';
-import CustomModal from './CustomModal';
-import EvolutionModal from './EvolutionModal';
+} from "../../../styles/myPage/bringUp/bringUp.style";
+import CustomModal from "./CustomModal";
+import EvolutionModal from "./EvolutionModal";
 import {
   pokeFull,
   pokeIntimate,
@@ -16,8 +16,8 @@ import {
   pokeEvolve,
   pokemonDetail,
   pokeStatus,
-} from '../../../api/pokemonAPI';
-import { Link, useHistory } from 'react-router-dom';
+} from "../../../api/pokemonAPI";
+import { Link, useHistory } from "react-router-dom";
 
 const BringUp = () => {
   const { mypokeid, pokemonid } = useParams();
@@ -33,10 +33,10 @@ const BringUp = () => {
   const [pokemon, setPokemon] = useState(false);
   const [isEvolutionModalOpen, setIsEvolutionModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({
-    title: '',
-    message: '',
+    title: "",
+    message: "",
     isError: false,
-    imageSrc: '',
+    imageSrc: "",
   });
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const BringUp = () => {
         setClean(status.clean);
         setIntimate(status.intimate);
       } catch (error) {
-        console.error('API 호출 실패:', error.message);
+        console.error("API 호출 실패:", error.message);
       }
     };
 
@@ -67,10 +67,10 @@ const BringUp = () => {
       pokeFull(mypokeid, full + 10);
     }, 3000);
     setModalContent({
-      title: '밥먹기',
-      message: '포만도 +10',
+      title: "밥먹기",
+      message: "포만도 +10",
       isError: false,
-      imageSrc: '../../../public/image/eating.gif',
+      imageSrc: "../../../public/image/eating.gif",
     });
   };
 
@@ -85,10 +85,10 @@ const BringUp = () => {
       pokeIntimate(mypokeid, intimate + 10);
     }, 3000);
     setModalContent({
-      title: '산책하기',
-      message: '친밀도 +10',
+      title: "산책하기",
+      message: "친밀도 +10",
       isError: false,
-      imageSrc: '../../../public/image/walking.gif',
+      imageSrc: "../../../public/image/walking.gif",
     });
   };
 
@@ -103,73 +103,82 @@ const BringUp = () => {
       pokeClean(mypokeid, clean + 10);
     }, 3000);
     setModalContent({
-      title: '목욕하기',
-      message: '청결도 +10',
+      title: "목욕하기",
+      message: "청결도 +10",
       isError: false,
-      imageSrc: '../../../public/image/bathing1.gif',
+      imageSrc: "../../../public/image/bathing1.gif",
+    });
+  };
+  //진화
+  const handleEvloutionClick = async () => {
+    setIsEvolutionModalOpen(true);
+    setModalContent({
+      title: "진화하기",
+      message: "앗 포켓몬 상태가?",
+      isError: false,
+      imageSrc: "../../../public/image/evl.gif",
+      mypokeid: mypokeid,
+      pokemonid: pokemonid,
     });
   };
 
-  const handleEvloutionClick = async () => {
-    // setIsEvolutionModalOpen(true);
-    const evolve = await pokeEvolve(mypokeid, pokemonid);
-    // console.log(evolve);
-    if (!evolve.id || !evolve.pokeid);
-    window.location.href = `/bringup/${evolve.id}/${evolve.pokeid}`;
-    // setModalContent({
-    //   title: '진화하기',
-    //   message: '앗 포켓몬 상태가?',
-    //   isError: false,
-    //   pokemonid: pokemonid,
-    //   mypokeid: mypokeid,
-    //   // imageSrc: '../../../public/image/evl.gif',
-    //   imageSrc: PokemonData.imagegif,
-    // });
-  };
-
-  const closeEvloutionModal = () => {
+  const handleEvolutionConfirm = async () => {
     setIsEvolutionModalOpen(false);
+    try {
+      const evolveData = await pokeEvolve(mypokeid, pokemonid);
+      console.log(`evolving data: ${evolveData}`);
+      if (evolveData.id && evolveData.pokeid) {
+        setPokemonData(evolveData);
+      } else {
+        console.error("Failed to evolve the Pokémon.");
+      }
+    } catch (error) {
+      console.error("Error while evolving Pokémon:", error);
+    }
   };
-
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleEvolutionCancel = () => {
+    setIsEvolutionModalOpen(false);
   };
 
   return (
     <div
       style={{
         backgroundImage: `url('../../../public/image/back1.jpg')`,
-        backgroundSize: '100% 100%',
-        backgroundRepeat: 'no-repeat',
-        height: '70vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
+        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
+        height: "70vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
       }}
     >
       <ProgressBox>
         <div>
-          <h2 style={{ textAlign: 'center' }}>포만도</h2>
+          <h2 style={{ textAlign: "center" }}>포만도</h2>
           <progress
-            style={{ width: '300px' }}
+            style={{ width: "300px" }}
             className="nes-progress is-primary"
             value={full}
             max="100"
           ></progress>
         </div>
         <div>
-          <h2 style={{ textAlign: 'center' }}>친밀도</h2>
+          <h2 style={{ textAlign: "center" }}>친밀도</h2>
           <progress
-            style={{ width: '300px' }}
+            style={{ width: "300px" }}
             className="nes-progress is-warning"
             value={intimate}
             max="100"
           ></progress>
         </div>
         <div>
-          <h2 style={{ textAlign: 'center' }}>청결도</h2>
+          <h2 style={{ textAlign: "center" }}>청결도</h2>
           <progress
-            style={{ width: '300px' }}
+            style={{ width: "300px" }}
             className="nes-progress is-error"
             value={clean}
             max="100"
@@ -185,9 +194,9 @@ const BringUp = () => {
                   ? PokemonData.imagegif
                   : PokemonData.imageurl
               }
-              className={`pokemon-image ${isEating ? 'eating' : ''} ${
-                isMoving ? 'moving-image' : ''
-              } ${isWalking ? 'walking' : ''} ${isBathing ? 'bathing' : ''}`}
+              className={`pokemon-image ${isEating ? "eating" : ""} ${
+                isMoving ? "moving-image" : ""
+              } ${isWalking ? "walking" : ""} ${isBathing ? "bathing" : ""}`}
             />
           )}
         </BigBox>
@@ -195,9 +204,9 @@ const BringUp = () => {
           <ButtonBox>
             <div
               style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <div>
@@ -205,7 +214,7 @@ const BringUp = () => {
                   type="button"
                   className="nes-btn is-primary"
                   onClick={handleEatButtonClick}
-                  style={{ marginRight: '10px' }}
+                  style={{ marginRight: "10px" }}
                 >
                   밥먹기
                 </button>
@@ -213,7 +222,7 @@ const BringUp = () => {
                   type="button"
                   className="nes-btn is-warning"
                   onClick={handleWalkButtonClick}
-                  style={{ marginRight: '10px' }}
+                  style={{ marginRight: "10px" }}
                 >
                   산책하기
                 </button>
@@ -226,7 +235,7 @@ const BringUp = () => {
                 </button>
               </div>
               {full + intimate + clean >= 300 && PokemonData.nextevolves ? (
-                <div style={{ position: 'absolute', right: '0px' }}>
+                <div style={{ position: "absolute", right: "0px" }}>
                   <button
                     type="button"
                     className="nes-btn is-success"
@@ -251,11 +260,14 @@ const BringUp = () => {
       />
       <EvolutionModal
         isOpen={isEvolutionModalOpen}
-        onClose={closeEvloutionModal}
+        onClose={handleEvolutionCancel}
+        onConfirm={handleEvolutionConfirm}
         title={modalContent.title}
         message={modalContent.message}
         isError={modalContent.isError}
         imageSrc={modalContent.imageSrc}
+        mypokeid={mypokeid} // 추가된 부분
+        pokemonid={pokemonid}
       />
     </div>
   );
