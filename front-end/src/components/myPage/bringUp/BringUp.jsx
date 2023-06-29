@@ -30,7 +30,6 @@ const BringUp = () => {
   const [isWalking, setIsWalking] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBathing, setIsBathing] = useState(false);
-  const [pokemon, setPokemon] = useState(false);
   const [isEvolutionModalOpen, setIsEvolutionModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({
     title: '',

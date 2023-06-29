@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { myInfoFetch, myPokeFetch } from '../../api/userAPI';
-
+import { pokeLetgo } from '../../api/pokemonAPI';
 import {
   MyPokemonCard,
   MyPokemonImage,
@@ -14,7 +14,15 @@ const Card = ({ pokeData, myPokeId }) => {
   const handleCardClick = () => {
     history.push(`/detail/${pokeData.id}`);
   };
-
+  const handleXClick = async (event) => {
+    event.stopPropagation();
+    try {
+      await pokeLetgo(myPokeId);
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
   const handleBringUp = async (event) => {
     event.stopPropagation(); // 이벤트 전파 중지(상세페이지)
 
@@ -40,6 +48,7 @@ const Card = ({ pokeData, myPokeId }) => {
         alt="Pokemon"
       />
       <div>
+        <button onClick={handleXClick}>X</button>
         <MyPokemonName>
           {pokeData.name}
           <BringButton onClick={handleBringUp}>육성</BringButton>
